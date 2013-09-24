@@ -6,4 +6,4 @@ I well know: HyperText Markup Language (HTML) & Cascading Style Sheets (CSS);</p
 <h3>What has been done</h3>
 
 <p>For example:</p>
-<a href='../resume/index.html'>examplee</a> HTML coding
+<a href='./resume/index.html'>examplee</a> HTML coding
