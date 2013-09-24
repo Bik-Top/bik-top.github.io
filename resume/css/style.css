@@ -1,0 +1,112 @@
+html, 
+body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	color: #4d4d4d;
+	font:normal 14px/15px Arial;
+}
+
+.wrap {
+	min-height: 100%; 
+	background: url('../images/bGround.png');
+	margin: 0 auto;
+	font-size: 100%;
+} 
+.main { 
+	margin:0 auto; 
+	width: 1000px;
+	padding-bottom: 20px;
+}  
+ .iAm{
+ 	display: inline-block;
+ 	width: 79%;
+ }
+.header{
+	overflow: hidden;box-sizing: border-box;
+}
+
+.myContacts{
+ 	display: inline-block;
+ 	width: 20%;
+}
+.mobilePhon,
+.mail,
+.skyp{
+	font: normal 12px/21px Arial;
+	color: #888888;
+}
+.mobilePhon:before{
+	content: '';
+	height: 16px;
+	width: 16px;
+	margin-right: 3px;
+	display: inline-block;
+	background: url('../images/phone.png') no-repeat 0 0;;
+	vertical-align: middle;
+}
+.mobilePhon:hover{
+	color: #999;
+}
+.mail:before{
+	content: '';
+	height: 16px;
+	width: 16px;
+	margin-right: 3px;
+	display: inline-block;
+	background: url('../images/mail.png') no-repeat 0 0;;
+	vertical-align: middle;
+}
+.mail a{ 
+	color: #917900;
+}
+.mail a:hover{ 
+	color: #AD9728;
+}
+.skyp:before{
+	content: '';
+	height: 16px;
+	width: 16px;
+	margin-right: 3px;
+	display: inline-block;
+	background: url('../images/skyp.png') no-repeat 0 0;;
+	vertical-align: middle;
+}
+.skyp a{
+	color: #00A3C2;
+}
+.skyp a:hover{
+	color: #00B5D6;
+}
+.myPhoto{
+	height: 216px;
+	width: 216px;
+	position: absolute;
+	background: url('../images/myPhoto.png') no-repeat 0 0;
+	right: 30px;
+	top: 20px;
+}
+.content{
+	position: relative;
+}
+.content>ul li {
+	margin-top: 25px;
+}
+.content>ul li>ol li a {
+	color: #605792;
+	text-decoration: none;
+	border-bottom: 1px dashed;
+}
+.content>ul li>ol li a:hover {
+	color: #7B6EC7;
+}
+.side{
+} 
+.footer { 
+	margin-top: -105px; 
+} 
+.foWrap{
+	width: 1000px;
+	height: 101px; 
+	margin: 0 auto; 
+}
