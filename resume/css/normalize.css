@@ -149,6 +149,7 @@ hr {
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     height: 0;
+    box-shadow: 0px 2px 0px #FFF;
 }
 
 /**
