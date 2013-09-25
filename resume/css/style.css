@@ -98,10 +98,11 @@ h2,h3,h1,p{
 .content>ul li>ol li a {
 	color: #605792;
 	text-decoration: none;
-	border-bottom: 1px dashed;
+	border-bottom: 1px dashed rgba(96, 87, 146, 0.5);
 }
 .content>ul li>ol li a:hover {
 	color: #7B6EC7;
+	border-bottom: 1px dashed rgba(96, 87, 146, 0.2);
 }
 .side{
 }
