@@ -101,7 +101,10 @@ body{
 	color: #7B6EC7;
 }
 .side{
-} 
+}
+.waiting li{
+	list-style-type: square;
+}
 .footer { 
 	margin-top: -105px; 
 } 
