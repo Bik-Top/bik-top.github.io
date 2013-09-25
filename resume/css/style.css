@@ -6,7 +6,9 @@ body{
 	color: #4d4d4d;
 	font:normal 14px/15px Arial;
 }
-
+h2,h3,h1{
+	text-shadow: 1px 1px 0px #FFF;
+}
 .wrap {
 	min-height: 100%; 
 	background: url('../images/bGround.png');
