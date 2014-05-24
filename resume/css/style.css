@@ -7,12 +7,12 @@ body{
 	font:normal 14px/15px Arial;
 }
 h2,h3,h1,p{
-	text-shadow: 1px 1px 0px #FFF;
+	text-shadow: 1px 1px 0 #FFF;
 }
 
 .wrap {
-	min-height: 100%; 
-	background: url('../images/bGround.png');
+	min-height: 100%;
+    background: #EEE;
 	margin: 0 auto;
 	font-size: 100%;
 } 
@@ -91,6 +91,7 @@ h2,h3,h1,p{
 }
 .content{
 	position: relative;
+    border: 1px solid #FFF;
 }
 .content>ul li {
 	margin-top: 25px;
@@ -116,4 +117,25 @@ h2,h3,h1,p{
 	width: 1000px;
 	height: 101px; 
 	margin: 0 auto; 
+}
+
+.gallery{
+    text-decoration: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.gallery li{
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+}
+.link{
+    color: #00A3C2;
+    font: normal 14px/15px Arial;
+}
+.gallery img{
+    width: 300px;
+    border: 1px solid #DDD;
+    padding: 2px;
 }
