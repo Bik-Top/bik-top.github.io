@@ -203,7 +203,7 @@ h2,h3,h1,p{
 .anythingSlider-default .anythingControls a {
   /* top shadow */
   background: #777 url(../images/default.png) center -288px repeat-x;
-  color: #000;
+  color: #fff;
   border-radius: 0 0 5px 5px;
   -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
@@ -310,7 +310,7 @@ h2,h3,h1,p{
 .anythingSlider-default .anythingControls ul { margin: 0; padding: 0; float: left; }
 .anythingSlider-default .anythingControls ul li { display: inline; }
 .anythingSlider-default .anythingControls ul a {
-  font: 11px/18px Georgia, Serif;
+  font: 11px/18px Serif;
   display: inline-block;
   text-decoration: none;
   padding: 2px 8px;
