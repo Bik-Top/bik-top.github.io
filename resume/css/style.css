@@ -454,7 +454,9 @@ h2,h3,h1,p{
   -webkit-transition-duration: 0s;
 }
 
-
+ul.thumbNav {
+  display: none;
+}
 
 
 
