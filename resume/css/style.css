@@ -50,7 +50,6 @@ a:focus {
   text-align: left;
  }
 .header{
-	overflow: hidden;
   box-sizing: border-box;
   text-align: right;
 }
