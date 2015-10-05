@@ -1,18 +1,40 @@
-html, 
+html,
 body{
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	color: #4d4d4d;
-	font:normal 14px/15px Arial;
+	color: #333;
+
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 h2,h3,h1,p{
 	text-shadow: 1px 1px 0 #FFF;
 }
 
+/*.link{
+  color: #00A3C2;
+  font: normal 14px/15px Arial;
+}*/
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #23527c;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
 .wrap {
 	min-height: 100%;
-    background: #EEE;
+    background: #fafafa;
 	margin: 0 auto;
 	font-size: 100%;
 } 
@@ -75,12 +97,6 @@ h2,h3,h1,p{
 	background: url('../images/skyp.png') no-repeat 0 0;;
 	vertical-align: middle;
 }
-.skyp a{
-	color: #00A3C2;
-}
-.skyp a:hover{
-	color: #00B5D6;
-}
 .myPhoto{
 	height: 216px;
 	width: 216px;
@@ -91,7 +107,9 @@ h2,h3,h1,p{
 }
 .content{
 	position: relative;
-    border: 1px solid #FFF;
+  box-shadow: -1px 1px 15px 1px #E4E4E4;
+  padding: 15px 0;
+  background: #fff;
 }
 .content>ul li {
 	margin-top: 25px;
@@ -134,10 +152,6 @@ h2,h3,h1,p{
     vertical-align: top;
     margin: 5px;
 }
-.link{
-    color: #00A3C2;
-    font: normal 14px/15px Arial;
-}
 .gallery img{
     border: 1px solid #DDD;
     padding: 2px;
@@ -154,11 +168,18 @@ h2,h3,h1,p{
 }
 
 
+hr {
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
 
-
-
-
-
+h3 {
+  background: #FAFAFA;
+  margin-right: 30px;
+  padding: 10px 10px;
+  box-shadow: inset -1px 1px 3px 1px #E4E4E4;
+}
 
 
 
