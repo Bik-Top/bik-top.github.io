@@ -118,10 +118,7 @@ ul li {
     margin: 10px 0;
     background: rgba(251, 255, 194, 0.51);
     text-align: right;
-    border: 10px solid transparent;
-
-    border-image: url('http://www.w3schools.com/cssref/border.png') round;
-    border-image-slice: 50;
+    border: 10px solid transparent; 
 
 
     border-radius: 9px;
