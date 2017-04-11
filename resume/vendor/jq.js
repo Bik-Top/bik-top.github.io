@@ -5,7 +5,7 @@ $(document).ready(function () {
       mode                : "fade",
       expand              : false,
       resizeContents      : false,
-      autoPlay            : true,
+      autoPlay            : false,
       navigationFormatter : null
       })
   });
