@@ -1,0 +1,23 @@
+
+// Import partials.
+@import
+"bourbon/bourbon"
+;
+
+.element {
+  @include clearfix;
+}
+
+@mixin br($rad){
+  -webkit-border-radius: $rad;
+  -moz-border-radius: $rad;
+  border-radius: $rad;
+}
+
+.page-heading{
+  border: solid 1px #ccc;
+  padding: 5px;
+  display: inline-block;
+  background: #e1e1e1;
+  @include br(4px);
+}
