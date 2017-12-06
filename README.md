@@ -1,16 +1,9 @@
-#### cold start, write in the console:
-` npm start`
-#### after, all commands in console with `gulpfile.js` that is `gulp default`.
-#### in `gulpfile.js` used
+## I'm used jekyll
+#### After cloning repo
+`bundle install`
+#### Cold start, write in the console:
+` bundle exec jekyll serve`
 
-+ gulp 
-+ gulp-autoprefixer
-+ gulp-cache
-+ gulp-concat
-+ gulp-cssnano
-+ gulp-imagemin
-+ gulp-sass
-+ gulp-uglifyjs
-+ imagemin-pngquant
-
-compiled file to `./dist`
+_Server address: http://127.0.0.1:4000/_
+ 
+compiled file to `_site`
