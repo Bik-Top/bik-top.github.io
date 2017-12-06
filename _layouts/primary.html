@@ -1,12 +1,12 @@
 ---
-layout: default
+layout: page
 ---
 
 
 <div class="home">
 
   <h1 class="page-heading">{{site.title}}</h1>
-   <div class="element">
+   <div class="element"> <p class="rss-subscribe">subscribe <a href="{{ '/feed.xml' | relative_url }}">via RSS</a></p>
   {{ content }}
   <ul class="post-list">
     {% for post in site.posts %}
@@ -21,6 +21,6 @@ layout: default
   </ul>
 
    </div>
-  <p class="rss-subscribe">subscribe <a href="{{ '/feed.xml' | relative_url }}">via RSS</a></p>
+
 
 </div>
