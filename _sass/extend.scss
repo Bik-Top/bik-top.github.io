@@ -13,13 +13,13 @@
   -moz-border-radius: $rad;
   border-radius: $rad;
 }
-.site-footer{
-  @include bg_img;
-}
-.navbar.bg-dark{
-  @include bg_img('/images/bg/low_contrast_linen/low_contrast_linen.png');
-  background-color: inherit !important;
-}
+//.site-footer{
+//  @include bg_img;
+//}
+//.navbar.bg-dark{
+//  @include bg_img('/images/bg/low_contrast_linen/low_contrast_linen.png');
+//  background-color: inherit !important;
+//}
 .page-heading{
   border: solid 1px #ccc;
   padding: 5px;
