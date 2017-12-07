@@ -3,6 +3,7 @@
 # Edit theme's home layout instead if you wanna make some changes
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: primary
+title: My_blog
 ---
 
 ### Опыт работы:
@@ -31,7 +32,7 @@ layout: primary
 
 
 ### Ожидания от работы:
-+ Получение опыта и применение знаний на практике. 
++ Получение опыта и применение знаний на практике.
 + Работа в команде или удаленно.
 + Продолжить развитие в web направлении.
 + Лаконичных решений
