@@ -21,6 +21,7 @@ $grey-color-dark:  darken($grey-color, 25%) !default;
 // Width of the content area
 $content-width:    800px !default;
 
+
 $on-palm:          600px !default;
 $on-laptop:        800px !default;
 
@@ -31,6 +32,11 @@ $on-laptop:        800px !default;
 //     padding-left: $spacing-unit / 2;
 //   }
 // }
+@mixin bg_img($bg_:'/images/bg/wet_snow/wet_snow.png') {
+    background-image: url($bg_);
+    background-repeat: repeat;
+}
+
 @mixin media-query($device) {
   @media screen and (max-width: $device) {
     @content;

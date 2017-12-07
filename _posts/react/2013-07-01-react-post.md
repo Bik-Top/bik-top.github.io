@@ -1,8 +1,8 @@
 ---
-layout: post_page
+layout: post
 title: React
 categories: react
-date: 2014-11-13 
+date: 2014-11-13
 ---
 
 Round sunglasses statement cashmere Fjallraven tucked t-shirt Paris skinny jeans grunge monochrome chambray shirt. Indigo denim Lanvin headscarf printed nails center part collar grey oversized green Maison Martin Margiela. Karlie K. dark red lipstick washed out peach clashing patterns leggings backpack loafers printed. Chiffon sheer Bag 'N' Noun beanie razor pleat Céline.

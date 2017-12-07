@@ -1,26 +1,29 @@
 <footer class="site-footer">
+  <div class="container">
+    <div class="row align-items-center">
 
-  <div class="wrapper">
 
-    <h2 class="footer-heading">{{ site.title | escape }}</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
+      <div class="col col-md-4">
+        <h2 class="footer-heading">{{ site.title | escape }}</h2>
+        <div class="element">
+          <p class="rss-subscribe">subscribe <a href="{{ '/feed.xml' | relative_url }}">via RSS</a></p>
+        </div>
+      </div>
+      <div class="col col-md-4">
         <ul class="contact-list">
           <li>
             {% if site.author %}
-              {{ site.author | escape }}
+              <p>  {{ site.author | escape }} </p>
             {% else %}
-              {{ site.title | escape }}
+              <p> {{ site.title | escape }}</p>
             {% endif %}
-            </li>
-            {% if site.email %}
-            <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-            {% endif %}
+          </li>
+          {% if site.email %}
+          <li><p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p></li>
+          {% endif %}
         </ul>
       </div>
-
-      <div class="footer-col footer-col-2">
+      <div class="col-md-4">
         <ul class="social-media-list">
           {% if site.github_username %}
           <li>
@@ -28,19 +31,15 @@
           </li>
           {% endif %}
 
-          {% if site.twitter_username %}
+          {% if site.skype %}
           <li>
-            {% include icon-twitter.html username=site.twitter_username %}
+            {% include icon-skype.html username=site.skype %}
           </li>
           {% endif %}
         </ul>
-      </div>
-
-      <div class="footer-col footer-col-3">
         <p>{{ site.description | escape }}</p>
       </div>
     </div>
-
   </div>
 
 </footer>

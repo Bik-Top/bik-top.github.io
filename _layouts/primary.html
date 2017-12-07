@@ -4,11 +4,7 @@ layout: page
 
 
 <div class="home">
-
-  <h1 class="page-heading">{{site.title}}</h1>
-   <div class="element"> <p class="rss-subscribe">subscribe <a href="{{ '/feed.xml' | relative_url }}">via RSS</a></p>
   {{ content }}
-
     <ul class="list-inline">
       {% for post in site.posts %}
         <li class="list-inline-item">
@@ -16,7 +12,5 @@ layout: page
         </li>
       {% endfor %}
     </ul>
-
-   </div>
 
 </div>

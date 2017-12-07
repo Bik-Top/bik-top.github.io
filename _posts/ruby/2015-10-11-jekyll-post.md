@@ -1,8 +1,8 @@
 ---
-layout: post_page
+layout: post
 title: Rails
 categories: _ruby rails
-date: 2015-12-26 
+date: 2015-12-26
 ---
 
 Pastry liquorice cotton candy halvah tootsie roll pie gummies chocolate bar. Chocolate biscuit liquorice sugar plum tiramisu. Tiramisu pastry jelly beans tart brownie. Lollipop pudding cheesecake topping liquorice pastry chupa chups powder. Jelly beans gummi bears lollipop. Sweet lemon drops soufflé jujubes pastry wafer wypas gummies. Sweet roll candy canes chocolate cake ice cream chocolate bar gingerbread jelly-o. Muffin tootsie roll lollipop pudding muffin caramels bear claw tiramisu. Cookie topping jelly. Toffee cookie cupcake soufflé. Dragée faworki soufflé. Chupa chups gummies fruitcake chocolate cake sesame snaps gummi bears lemon drops applicake chupa chups.

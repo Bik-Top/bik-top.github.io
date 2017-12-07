@@ -1,7 +1,7 @@
 ---
-layout: post_page
+layout: post
 title: MUSTACHE
-categories: _html mustache 
+categories: _html mustache
 date:   2016-07-21
 ---
 

@@ -14,8 +14,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: M.V.V
-username: Victor Mantorov
+title: My_blog
+author: Victor Mantorov
 email: 0957720714@mail.ru
 skype: mantorov_viktor
 phone: +38(095) 77-20-714
