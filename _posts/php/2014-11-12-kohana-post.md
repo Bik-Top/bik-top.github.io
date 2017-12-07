@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Yii2
-categories: php yii2
-date: 2014-11-13 
+categories: PHP
+date: 2014-11-13
 ---
 
 `

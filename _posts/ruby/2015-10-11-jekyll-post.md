@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Rails
-categories: _ruby rails
+categories: Ruby
 date: 2015-12-26
 ---
 

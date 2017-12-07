@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Jekyll
-categories: _ruby jekyll
+categories: Ruby
 date: 2015-12-26
 ---
 

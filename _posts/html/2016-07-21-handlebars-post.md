@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Handlebars
-categories: _html handlebars 
+categories: HTML
 date:   2015-08-14
 ---
 

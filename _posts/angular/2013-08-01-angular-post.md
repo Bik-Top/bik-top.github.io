@@ -1,7 +1,7 @@
 ---
-layout: post 
+layout: post
 title: Angular
-categories: _angular 
+categories: angular
 date:   2013-08-01
 ---
 

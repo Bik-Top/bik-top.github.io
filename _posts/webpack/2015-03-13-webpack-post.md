@@ -2,7 +2,7 @@
 layout: post
 title: Webpack
 categories: Webpack
-date: 2015-11-17 
+date: 2015-11-17
 ---
 
 Bacon ipsum dolor sit amet shank corned beef beef ribs andouille. Hamburger tongue t-bone, fatback pork belly salami drumstick tail leberkas. Meatball pork belly spare ribs sirloin pig. Chuck tri-tip doner pastrami cow sausage spare ribs shoulder andouille.

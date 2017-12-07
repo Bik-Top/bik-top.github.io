@@ -1,7 +1,7 @@
 ---
 layout: post
 title: React
-categories: react
+categories: TypeScript
 date: 2014-11-13
 ---
 

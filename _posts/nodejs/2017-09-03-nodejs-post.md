@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Node.js
-categories: _nodejs node.js 
-date:   2014-11-13 
+categories: javascript
+date:   2014-11-13
 ---
 
 `

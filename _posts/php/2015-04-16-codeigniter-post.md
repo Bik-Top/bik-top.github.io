@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Codeigniter
-categories: php codeigniter
-date: 2014-11-13 
+categories: PHP
+date: 2014-11-13
 ---
 
 `
