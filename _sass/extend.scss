@@ -22,17 +22,41 @@
   max-width: 16px;
 }
 .My_blog{
-  overflow: hidden;
-  background-size: auto;
-  background: url(../images/bg.jpg) top left no-repeat;
-  background-size: cover;
 }
+
 body{
-  overflow-x: hidden;
-  overflow-y: scroll;
   font-family: "franklin-gothic-urw", sans-serif;
-  position: relative;
 }
+
+.sy-slides-wrap {
+  position: absolute !important;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+}
+.sy-slides-crop {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: initial;
+  background: #6600e8;
+}
+
+.sy-list {
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+}
+.sy-slide>img{
+  opacity: .4;
+}
+.sy-pager{
+  display: none !important;
+}
+
 #header {
   text-align: center;
   padding-top: 4em;
@@ -47,8 +71,10 @@ body{
   color: #fff;
 }
 
-
-
+#cd-nav {
+  position: relative;
+  z-index: 2;
+}
 
 
 

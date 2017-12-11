@@ -7,14 +7,33 @@
 {% assign page_paths = site.header_pages | default: default_paths %}
 <body class="{{ page.title | escape }}">
 
-<a href="#cd-nav" class="cd-nav-trigger" data-toggle="cd-nav" aria-controls="cd-nav">Menu
-  <span class="cd-nav-icon"></span>
-  <svg x="0px" y="0px" width="54px" height="54px" viewBox="0 0 54 54">
-    <circle fill="transparent" stroke="#fff" stroke-width="1" cx="27" cy="27" r="25" stroke-dasharray="157 157" stroke-dashoffset="157"></circle>
-  </svg>
-</a>
+
+
+<ul id="slider" >
+  <li class="sy-slide kenburns useCSS sy-ken transition">
+    <img src="/images/bg.jpg">
+  </li>
+  <li class="sy-slide kenburns useCSS transition sy-ken sy-active">
+    <img src="/images/bg2.jpg">
+  </li>
+  <li class="sy-slide kenburns useCSS">
+    <img src="/images/bg3.jpg">
+  </li>
+</ul>
+
+
+
 <main id="page">
   <div class="container">
+
+
+    <a href="#cd-nav" class="cd-nav-trigger" data-toggle="cd-nav" aria-controls="cd-nav">Menu
+      <span class="cd-nav-icon"></span>
+      <svg x="0px" y="0px" width="54px" height="54px" viewBox="0 0 54 54">
+        <circle fill="transparent" stroke="#fff" stroke-width="1" cx="27" cy="27" r="25" stroke-dasharray="157 157" stroke-dashoffset="157"></circle>
+      </svg>
+    </a>
+
     <div class="" id="header" >
       <div class="col-sm-12">
         <div class="caption">
@@ -29,7 +48,7 @@
         <div class="row cd-navigation-wrapper">
           <div class="col-md-4">
             <h5><span>SOCIAL</span></h5>
-            <nav>
+
               <ul>
                 {% for path in page_paths %}
                 {% assign my_page = site.pages | where: "path", path | first %}
@@ -42,11 +61,11 @@
                 {% endif %}
                 {% endfor %}
               </ul>
-            </nav>
+
           </div>
           <div class="col-md-4">
             <h5><span>MENU</span></h5>
-            <nav>
+
               <ul>
                 {% for path in page_paths %}
                 {% assign my_page = site.pages | where: "path", path | first %}
@@ -59,7 +78,7 @@
                   {% endif %}
                 {% endfor %}
               </ul>
-            </nav>
+
           </div>
           <div class="col-md-4">
             <h5><span>CONTACT</span></h5>
@@ -78,18 +97,7 @@
     </div>
   </div>
 
-<main class="mt-5 container d-none" id="back-of">
-    <div class="home">
-      {{ content }}
-      <ul class="list-inline">
-        {% for post in site.posts %}
-        <li class="list-inline-item">
-          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </main>
+
 
 </main>
 
@@ -117,6 +125,8 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slippry/1.4.0/slippry.js"></script>
 <script src="{{ '/script/app.js' | relative_url }}"></script>
 </html>
 

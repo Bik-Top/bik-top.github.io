@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
   $('.cd-nav-trigger').on('click', function(event){
     event.preventDefault();
     $('body').toggleClass('navigation-is-open');
-    $('#header').toggleClass('animated fadeOutRight')
+    $('#header').toggleClass('animated fadeOutUpp')
   /*  $('#header').animateCss('fadeOutLeft', function () {
       $('#header').toggleClass('fadeInLeft');
     })*/
@@ -27,3 +27,17 @@ jQuery(document).ready(function($){
 });
 
 
+
+$(function() {
+  var demo1 = $("#slider").slippry({
+    transition: 'kenburns',
+    useCSS: true,
+    speed: 5000,
+    pause: 9000,
+    auto: true,
+    controls: false,
+    preload: 'visible',
+    autoHover: false
+  });
+
+});
