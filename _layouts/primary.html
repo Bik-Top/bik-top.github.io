@@ -1,18 +1,124 @@
----
-layout: page
----
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "ru" }}">
 
+{% include head.html %}
 
-<div class="home">
-  {{ content }}
-    <ul class="list-inline">
-      {% for post in site.posts %}
+{% assign default_paths = site.pages | map: "path" %}
+{% assign page_paths = site.header_pages | default: default_paths %}
+<body class="{{ page.title | escape }}">
+
+<a href="#cd-nav" class="cd-nav-trigger" data-toggle="cd-nav" aria-controls="cd-nav">Menu
+  <span class="cd-nav-icon"></span>
+  <svg x="0px" y="0px" width="54px" height="54px" viewBox="0 0 54 54">
+    <circle fill="transparent" stroke="#fff" stroke-width="1" cx="27" cy="27" r="25" stroke-dasharray="157 157" stroke-dashoffset="157"></circle>
+  </svg>
+</a>
+<main id="page">
+  <div class="container">
+    <div class="" id="header" >
+      <div class="col-sm-12">
+        <div class="caption">
+          <h1 class="element">Front-End Developer</h1>
+          <span>Hello, I'm BikTop, specializing in web development, front-end<br>development and digital media.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="animated" id="cd-nav">
+      <div class="col-sm-12 cd-nav">
+        <div class="row cd-navigation-wrapper">
+          <div class="col-md-4">
+            <h5><span>SOCIAL</span></h5>
+            <nav>
+              <ul>
+                {% for path in page_paths %}
+                {% assign my_page = site.pages | where: "path", path | first %}
+                {% if my_page.title  %}
+                {% if my_page.title != site.title %}
+                <li >
+                  <a class="selected" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+                </li>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </nav>
+          </div>
+          <div class="col-md-4">
+            <h5><span>MENU</span></h5>
+            <nav>
+              <ul>
+                {% for path in page_paths %}
+                {% assign my_page = site.pages | where: "path", path | first %}
+                  {% if my_page.title  %}
+                    {% if my_page.title != site.title %}
+                    <li >
+                      <a class="selected" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+                    </li>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </nav>
+          </div>
+          <div class="col-md-4">
+            <h5><span>CONTACT</span></h5>
+            <address>
+              <ul class="cd-contact-info">
+                <li><a href="mailto:info@jdcdesignstudio.com">{{ site.email | escape }}</a></li>
+                <li>{{ site.phone | escape }}</li>
+                <li>
+                  <span>NSW, Australia</span>
+                </li>
+              </ul>
+            </address>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+<main class="mt-5 container d-none" id="back-of">
+    <div class="home">
+      {{ content }}
+      <ul class="list-inline">
+        {% for post in site.posts %}
         <li class="list-inline-item">
           <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
         </li>
-      {% endfor %}
-    </ul>
+        {% endfor %}
+      </ul>
+    </div>
+  </main>
+
+</main>
 
 
 
-</div>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="{{ '/script/app.js' | relative_url }}"></script>
+</html>
+
+
+

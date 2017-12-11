@@ -1,13 +1,4 @@
 
-// Import partials.
-@import
-"bourbon/bourbon"
-;
-
-.element {
-  @include clearfix;
-}
-
 @mixin br($rad){
   -webkit-border-radius: $rad;
   -moz-border-radius: $rad;
@@ -27,3 +18,48 @@
   background: #e1e1e1;
   @include br(4px);
 }
+.icon > svg {
+  max-width: 16px;
+}
+.My_blog{
+  overflow: hidden;
+  background-size: auto;
+  background: url(../images/bg.jpg) top left no-repeat;
+  background-size: cover;
+}
+body{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-family: "franklin-gothic-urw", sans-serif;
+  position: relative;
+}
+#header {
+  text-align: center;
+  padding-top: 4em;
+  padding-bottom: 2em;
+  min-height: auto;
+  z-index: 2;
+  position: relative;
+
+}
+
+.caption {
+  color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@import
+"elemens/nav-icon",
+"elemens/element-slide-left"
+;
+

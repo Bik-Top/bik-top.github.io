@@ -17,16 +17,16 @@
 title: My_blog
 author: Victor Mantorov
 email: 0957720714@mail.ru
-skype: mantorov_viktor
 phone: +38(095) 77-20-714
 
 description: >- # Резюме Манторова Виктора, примеры работ, навыки и умения, что изучаю
 
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://bik-top.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 
 twitter_username: jekyllrb
 github_username:  Bik-Top
+skype_username: mantorov_viktor
 
 # путь к статье в формате /категория/название_статьи
 permalink: /:categories/:title/
