@@ -1,0 +1,593 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    " http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+    
+    <link rel="stylesheet" type="text/css" href="css/style2.css"/>
+    <script src="js/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+
+    <script type="text/javascript"> 
+   
+    $(function () {
+        $('.radio').click(function () {
+            $('.radio').removeClass('radio_active');
+            $(this).addClass('radio_active');
+        });
+    });
+    function login() {
+        var disp = $('.password_vxod');
+        var ss = $('#hide');
+        
+        if (disp.css('display') == 'none') {
+            disp.css('display', 'block');
+        } else {
+            disp.css('display', 'none');
+        }
+        if (ss.css('display') == 'none') {
+            ss.css('display', 'block');
+        } else {
+            ss.css('display', 'none');
+        }
+    }
+    
+    
+    
+    </script>
+    <div id="hide" style=" display: none; height: 100%; width: 100%; position: fixed; background: rgba(201, 201, 201, 0.7); z-index: 2; "></div>
+    <div class="wrapper">
+        <div class="content">
+           
+
+            <div class="header_box" style="z-index: 3; position: relative;">
+                <div class="header_content">
+                    <a href="/">
+                        <img src="img/logo.png" class="logo"/>
+                    </a>
+
+                    <div class="header_menu">
+                        <div class="menu_oben">
+                           
+                        </div>
+                        <div class="menu_oben">
+                          
+                        </div>
+                        <div class="menu_oben" style="border: none;">
+                           <span class='hederPhoneOut'> +38 067 1234567</span>
+                        </div>
+                        <div class="menu_oben" style="border: none; margin-top: 15px;">
+                           <a href="#" class="menu_header_vxod">ВЫХОД</a>
+                        </div>
+                    
+                    <style>
+                    .view {
+                        display: block;
+                    }
+
+                    .viewa {
+                        display: none;
+                    }
+                    </style>
+                    <script>
+                    var url = '';
+                    function send_otp(url) {
+                        var otp = $('.inpyt_password');
+                        var ss = '';
+                        otp.each(
+                            function () {
+                                ss += this.value;
+                            }
+                            );
+                        $.ajax({
+                         url:'/autorize_otp/' + url,
+                         type:'POST',
+                         dataType:'json',
+                         data:{
+                             otpz:ss
+                         },
+                         success:function (data) {
+
+                             if (data.token) {
+
+                                 open('/settings/' + data.token, '_self');
+                             }
+                             else if (data == 'false') {
+                                 $('.view').css('display', 'block');
+                                 $('.viewa').css('display', 'none');
+                             }
+                         }
+                     });
+                    }
+                    function show_otp_field() {
+                        var otp = $('.viewa');
+                        $('.view').css('display', 'none');
+                        otp.css('display', 'block');
+                    }
+
+                    function get_otp() {
+                        var phone = $('#phone').val();
+                        $.ajax({
+                         url:'/autorize/',
+                         type:'POST',
+                         dataType:'json',
+                         data:{
+                             phone:phone
+                         },
+                         success:function (data) {
+                             if (data != 'false') {
+                                 show_otp_field();
+
+                                 url = data.url;
+                             }else{
+                                 open('/step_one/', '_self');
+                             }
+                         }
+                     });
+                    }
+
+                    $('#send').live("click", function () {
+                        send_otp(url);
+                        $("#send").attr('disabled','true');
+                        setTimeout('$("#send").removeAttr("disabled")', 5000);
+                    });
+                    </script>
+
+                    <div class="password_vxod">
+                        <p class="vxod_p">Вход на сайт</p>
+
+                        <div class="bloc_password">
+                            <input id="phone" style="margin-left: 19px;" type="text" class="inpyt_number view"
+                            placeholder="Введите телефон" autofocus="autofocus" value="380669843994"> 
+                            <input style="margin-left: 20px;" type="text" class="inpyt_password viewa" autofocus="autofocus" placeholder="XX" maxlength="2"
+                            autofocus="autofocus">
+                            <input type="text" class="inpyt_password viewa" placeholder="XX" maxlength="2">
+                            <input type="text" class="inpyt_password viewa" placeholder="XX" maxlength="2">
+                            <input type="text" id="sub"  class="inpyt_password viewa" placeholder="XX" maxlength="2">
+
+                        </div>
+                        <script>
+
+
+                        $('input[id="phone"]').keypress(function(e){
+                            if (e.which == 13) {
+                                if ($('input[id="phone"]').val().length > 10 ){
+                                    get_otp();
+                                }
+                            }
+                        });
+                        $('input[id="sub"]').keypress(function(e){
+                            if (e.which == 13) {
+                                if ($('input[id="sub"]').val().length = 2 ){
+                                    send_otp(url);
+                                }
+                            }
+                        });
+                        $('input').keyup(function (e) {
+                            if ($(this).hasClass('viewa')) {
+                                if ($(this).val().match(/^\d+$/)) {
+                                    if ($(this).val().match(/^\d{2}$/)) {
+                                        $(this).next('input').focus();
+                                    }
+                                } else {
+                                    $(this).val('');
+                                }
+                            }
+                        });
+                        </script>
+                        <div class="vxod_botton view" onclick="get_otp()">Войти</div>
+                        <div id="send" class="vxod_botton viewa">Войти</div> 
+
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+<!-- 
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js" type="text/javascript"></script> -->
+        <div class="content_box">
+
+            <div class="content_e_commerce">
+
+        <div class="content_box_left">
+            <div class="content_box_left_content"> 
+                <div class="content_box_left_text dd" id="dd">
+                    <span class='leftMenuText'>Платежные  инструменты</span> <span class="triangle"></span></div>
+                    <div class='vertMenu'>
+                        <div class="content_box_left_text border"> 
+                            <b><span class='leftMenuText'>Платежи on-line</span></b>  
+                            <div class="select_text_content greenTest" onclick="document.location = '/settings/'"  >
+                            - Visa / MasterCard
+                            </div>
+                            <div class="select_text_content">- API</div>
+                        </div>
+                        <div class="content_box_left_text border">
+
+                            <b><span class='leftMenuText'>Ручные платежи</span></b> 
+
+                            <div class="select_text_content" onclick="document.location = '/invoice/'">- Инвойсы </div>
+                            <div class="select_text_content">- Мото </div>
+                            <div class="select_text_content" onclick="document.location = '/reader/'"> - Мини-терминал </div>
+                        </div>
+                        <div class="content_box_left_text border">
+
+                            <b><span class='leftMenuText'>Коммуникации</span></b> 
+
+                            <div class="select_text_content" onclick="document.location = '/siteheart/'">- Чат</div>
+                        </div>   
+                    </div>
+
+                    <div class="content_box_left_text  dd">
+                        <span class='leftMenuText'>Техническое описание</span>
+                    </div>
+                    <div class="content_box_left_text dd">
+                        <span class='leftMenuText'>Отчеты</span>
+                    </div> 
+                    <div class="content_box_left_text dd">
+                        <span class='leftMenuText'>Настройки</span>  
+                        <span class="triangle"></span> 
+                    </div>
+
+                    <div class='vertMenu'>
+                        <div class="content_box_left_text border">
+
+                            <b><span class='leftMenuText'>registered</span></b> 
+
+                            <div class="select_text_content" onclick="document.location='/invoice/'">invoice</div>  
+                        </div>
+                        <div class="content_box_left_text border">
+
+                            <b><span class='leftMenuText'>not  registered</span></b> 
+
+                            <div class="select_text_content" onclick="document.location='/p24/'">p24</div> 
+                            <div class="select_text_content" onclick="document.location='/qrshop/'">qrshop</div> 
+                            <div class="select_text_content" onclick="document.location='/aquiring/'">aquiring</div> 
+                            <div class="select_text_content" onclick="document.location='/siteheart/'">siteheart</div> 
+                            <div class="select_text_content" onclick="document.location='/reader/'">reader</div> 
+                        </div> 
+                    </div>
+            </div>
+        </div>
+        
+        <div class="content_box_right">
+
+            <div class='content_box_rightWrap'>
+                <h1>Поздравляем!</h1>
+                <p>Регистрация мерчанта и активация платежных сервисов успешно завершена.</p> 
+            </div>
+
+            <div class='content_box_rightWrapColor'>
+                <div class='content_boxTitle chcked_done'>
+                    <span class='content_boxTitleLEFT'>
+                        <h1>Супер-кнопка</h1>
+                        <p>Простой и быстрый способ принимать платежи на Вашем сайте.</p> 
+                    </span>
+                    <span class='content_boxTitleRIGHT'>Скрыть <span class="triangle"></span> </span>
+                </div>
+
+                <div class='content_box_CodePre' style='display:block;'>
+                    <div class='content_boxLeft'>
+                        <code>
+                            <xmp>
+<?xml version="1.0" encoding="UTF-8"?>
+<request>
+<liqpay>
+    <operation_envelope> <!—Пакет содержащий непосредственно операцию  и подпись-->     
+    <operation_xml><!—XML операции-->
+    heYUgfdweiuIUGwdfuiweqgfweigfiqgTGyigfewqgf==
+</operation_xml>
+                            </xmp>
+                        </code>
+                    </div>
+                    <div class='content_boxRight'>
+                        <p>Установиви этот код на сайт вы чегото там получите и будет вам счастье!</p>
+                            <a href="#" class="menu_header_vxod">Скопировать код</a>
+                    </div>
+
+                </div>
+            </div><!-- content_box_rightWrapColor -->
+
+
+
+            <div class='content_box_rightWrapColor '>
+                <div class='content_boxTitle '>
+                    <div class='checkboxIMG'>
+                        <input type="checkbox" id="c1" name="cc" />
+                        <label for="c1"><span></span></label>
+                     </div>
+
+                    <span class='content_boxTitleLEFT '>
+                        <h1><span  class='content_boxColorGreen'> Интернет эквайринг </span></h1>
+                        <p>Прием к оплате карт Visa / masterCard на Вашем сайте.</p> 
+                    </span>
+                    <span class='content_boxTitleRIGHT'>Подробнее <span class="triangle"></span> </span>  
+                </div>
+
+            <!-- <div class='content_box_CodePre' style='display:block;'>
+                  
+                </div> -->
+
+            </div><!-- content_box_rightWrapColor -->
+
+
+            
+            <div class='content_box_rightWrapColor '>
+                <div class='content_boxTitle '>
+                    <div class='checkboxIMG'>
+                        <input type="checkbox" id="c2" name="cc" />
+                        <label for="c2"><span></span></label>
+                     </div>
+
+                    <span class='content_boxTitleLEFT '>
+                        <h1>Инвойсы</h1>
+                        <p>Самый простой способ получить оплату — выставить счет</p> 
+                    </span>
+                    <span class='content_boxTitleRIGHT'>Подробнее <span class="triangle"></span> </span>  
+                </div>
+
+            <!-- <div class='content_box_CodePre' style='display:block;'>
+                  
+                </div> -->
+
+            </div><!-- content_box_rightWrapColor -->
+
+
+
+            <div class='content_box_rightWrapColor '>
+                <div class='content_boxTitle '>
+                    <div class='checkboxIMG'>
+                        <input type="checkbox" id="c3" name="cc" />
+                        <label for="c3"><span></span></label>
+                     </div>
+
+                    <span class='content_boxTitleLEFT '>
+                        <h1>Интернет эквайринг </h1>
+                        <p>Подключение автоматического приема платежей на Вашем сайте</p> 
+                    </span>
+                    <span class='content_boxTitleRIGHT'>Подробнее <span class="triangle"></span> </span>  
+                </div>
+
+            <!-- <div class='content_box_CodePre' style='display:block;'>
+                  
+                </div> -->
+
+            </div><!-- content_box_rightWrapColor -->
+
+
+
+            <div class='content_box_rightWrapColor '>
+                <div class='content_boxTitle '>
+                   <!--  <div class='checkboxIMG'>
+                        <input type="checkbox" id="c4" name="cc" />
+                        <label for="c4"><span></span></label>
+                     </div> -->
+
+                    <span class='content_boxTitleLEFT '>
+                        <h1>Интернет эквайринг </h1>
+                        <p class="box_ColorG">Прием к оплате карт Visa / masterCard на Вашем сайте.</p> 
+                    </span>
+                    <span class='content_boxTitleRIGHTPlus'>
+                        <span class='checkboxMiniIMG'>
+                            <input type="checkbox" id="c4" name="cc" />
+                            <label for="c4"><span></span>Подключить</label>
+                        </span>
+                       <span class='contentBoxText'>Скрыть  <span class="triangle"></span> </span>
+                    </span>  
+                </div>
+
+                <div class='content_box_CodePre' style='display:block;'>
+                   <p class="content_boxText"><img src="img/cardVisa.png" align="right" width="107" height="73" alt="">Приём к оплате наличных, карт VISA и MasterCard, счетов Liqpay как в авто- матическом режиме на Вашем сайте, так и операторами в режиме онлайн- чата. </p>
+
+                    <h1 class="content_boxColorGreen">Возможности</h1>
+                    <p  class="content_boxText">Приём к оплате наличных, карт VISA и MasterCard, счетов Liqpay как в автоматическом режиме на Вашем сайте, так и операторами в режиме онлайн-чата. Приём к оплате наличных, карт VISA и MasterCard, счетов Liqpay как в автоматическом режиме на Вашем сайте, так и операторами в режиме онлайн-чата.</p>
+                    <h1 class="content_boxColorGreen">Реквизиты мерчанта</h1>
+                    <p class="content_boxText">Приём к оплате наличных, карт VISA и MasterCard, счетов Liqpay как в автоматическом режиме на Вашем сайте, так и операторами в режиме онлайн-чата.</p> 
+                </div> 
+
+
+            </div><!-- content_box_rightWrapColor -->
+
+
+
+
+            
+
+            <div class='content_box_rightWrapTitle'>
+                <h1 class="content_boxTitleText">Подключеные сервисы</h1> 
+            </div>
+
+             <div class="content_box_rightWrapColor ">
+                <div class="content_boxTitle chcked_done "> 
+                    <span class="content_boxTitleLEFT ">
+                        <h1><span class="content_boxColorGreen"> Супер-кнопка</span></h1>
+                        <p>Простой и быстрый прием к оплате карт Visa / masterCard на Вашем сайте.</p> 
+                    </span>
+                </div>
+
+            <!-- <div class='content_box_CodePre' style='display:block;'>
+                  
+                </div> -->
+
+            </div>
+
+             <div class="content_box_rightWrapColor ">
+                <div class="content_boxTitle chcked_done "> 
+                    <span class="content_boxTitleLEFT ">
+                        <h1><span class="content_boxColorGreen"> Интернет эквайринг</span></h1>
+                        <p>Прием к оплате карт Visa / masterCard на Вашем сайте.</p> 
+                    </span>
+                    <span class="posRight">
+                        <a href="" class="bt_posRight">Личный кабинет</a> 
+                    </span> 
+                </div>
+
+            <!-- <div class='content_box_CodePre' style='display:block;'>
+                  
+                </div> -->
+
+            </div> 
+
+
+            <div class='content_box_rightWrapTitle'>
+                <h1 class="content_boxTitleText">Не Подключеные сервисы</h1> 
+            </div>
+
+             <div class="content_box_rightWrapColor ">
+                <div class="content_boxTitle chcked_done "> 
+                    <span class="content_boxTitleLEFT ">
+                        <h1>Платежное API </h1>
+                        <p>Подключение автоматического приема платежей на Вашем сайте</p> 
+                    </span>
+                    <span class="posRight">
+                        <a href="" class="bt_posRight">Подключить</a> 
+                    </span> 
+                </div>
+
+            <!-- <div class='content_box_CodePre' style='display:block;'>
+                  
+                </div> -->
+
+            </div>
+
+
+
+
+
+            <div class="block_batton">
+                <a href="" class="bt_login">Подключить</a> 
+            </div> 
+
+
+
+
+
+
+             <div class='content_box_rightWrapColor'>
+
+                <div class='content_box_rightWrapTitle'>
+                    <h1 class="greenH1">Подключеные сервисы</h1>
+                    <p class="titleBoxUnderH1">Для подключения выбраных сервисов приема платежей укажите Ваши реквизиты</p> 
+                </div> 
+               
+                <div class='content_box_CodePre' style='display:block;'>
+                    <p class="boldlP14 ">Интернет эквайринг</p> 
+
+                    <div class="blockFilds  BorBottom">
+
+                        <div class="blosk_liner">
+                            <div class="emptyBlockL"> 
+                                <span>Мерчант ID:</span>
+                            </div>
+                            <div class="emptyBlockR"> 
+                                <span class='boldlP14'>1234567</span>
+                            </div>
+                        </div> 
+                        <div class="blosk_liner">
+                            <div class="emptyBlockL"> 
+                                <span>Пароль:</span>
+                            </div>
+                            <div class="emptyBlockR"> 
+                                <span class='boldlP14'>ghrfwekufgew;r9723946t14</span>
+                            </div>
+                        </div> 
+                             
+                        <div class="blosk_liner">
+                            <div class="emptyBlockL"> 
+                                <span>Название магазина:</span>
+                            </div>
+                            <div class="emptyBlockR">
+                                <input type="text" class="numbInput" value='Мебельный сайт'> 
+                            </div>
+                        </div>     
+                        <div class="blosk_liner">
+                            <div class="emptyBlockL"> 
+                                <span>URL магазина:</span>
+                            </div>
+                            <div class="emptyBlockR">
+                                <input type="text" class="numbInput" value='mebel.dp.ua'> 
+                            </div>
+                        </div>
+
+                             
+                        <div class="blosk_liner">
+                            <div class="emptyBlockL"> 
+                                <span>Тип возмещения</span>
+                            </div>
+                            <div class="emptyBlockR">
+                                    <select class="blockFildsData">
+                                        <option>На карту</option>
+                                        <option>C карту</option>
+                                        <option>В карту</option>
+                                        <option>На картуНа  </option>
+                                    </select> 
+                            </div>
+                        </div> 
+                        <div class="blosk_liner">
+                            <div class="emptyBlockL"> 
+                                <span>Возмещение на:</span>
+                            </div>
+                            <div class="emptyBlockR">
+                                <input type="text" class="cvvInput" maxlength="16">
+                            </div>
+                        </div>
+                        <div class="blosk_liner">
+                            <div class="emptyBlockL"> 
+                                <span>Юридическое наименование:</span>
+                            </div>
+                            <div class="emptyBlockR">
+                                <input type="text" class="phonInput" value="Днепропетровский мебельный завод">
+                            </div>
+                        </div>
+                    </div>  
+
+                    <div class= 'blockL'> 
+                        <a  class='linkBack' href="http://#">Назад</a>  
+                    </div>
+
+                    <div class= 'blockR'>
+                        <div class="block_batton">
+                            <a href="" class="bt_login">Подключить</a> 
+                        </div> 
+                    </div>
+
+                </div><!-- content_box_CodePre -->
+
+            </div><!-- content_box_rightWrapColor -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+</div>
+
+
+</div>
+</div>
+<div class="footer_box">
+    <div class="footer_content">
+        <img src="img/logos.png" class="logos">
+        <a href="/">
+            <img src="img/copyright.png" class="copyright">
+        </a>
+    </div>
+</div>
+</body>
+</html>

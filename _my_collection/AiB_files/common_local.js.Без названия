@@ -1,0 +1,1002 @@
+/**
+ * Created by pavel on 10.05.16.
+ */
+
+var currentLang;
+
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
+function countDeliveryTotal(e){
+    var commodities = e.find('div.commodity-container');
+    var total = 0;
+
+    for(var i=0;i<commodities.length;i++){
+        var c =  $(commodities[i]);
+        var price = parseFloat(c.find('div.commodity-price-value').text());
+        var quant = c.find('input.quantity-input').val();
+        total += price*quant;
+    }
+
+    e.find('span.delivery-quantity-value').text(commodities.length);
+    e.find('span.delivery-total-value').text(total);
+
+}
+
+function fph(phone) {
+    try {
+        return phone.substr(0,2)+' '+phone.substr(2,3)+' '+phone.substr(5,3)+' '+phone.substr(8);
+    }
+    catch (e){return phone}
+}
+
+function validateEmail(email) {
+    //var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var re = /^[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/;
+    return re.test(email);
+}
+
+function countBasketDeliveryTotal(e){
+    var commodities = e.closest('div.user-basket-body').find('div.commodity-container');
+    var total = 0;
+    var quantity = 0;
+    for(var i=0; i<commodities.length; i++){
+        var c =  $(commodities[i]);
+        var quant = c.find('input.quantity-input');
+        if(quant.length>0) {
+            var price = parseFloat(c.find('div.commodity-price-value').text());
+            total += price * quant.val();
+            quantity += parseInt(quant.val());
+        }
+    }
+    var discount = $('span.discount-value').html();
+    $('span.delivery-quantity-value').text(quantity);
+    $('span.delivery-total-value').text(total*(100 - discount)/100);
+}
+
+
+function selectBasketGrade(grade,token){
+
+    $.ajax({
+        url:currentLang+'/site/family-select-grade',
+        method:'GET',
+        data:{'grade':grade, 'token':token},
+        success:function(){
+            var img = $('img.grade');
+            for(var i=0;i<img.length;i++) {
+                $(img[i]).attr('src', $(img[i]).attr('src').replace('_cursor', ''));
+            }
+            var active = $('img.grade.grade-'+grade);
+            active.attr('src',active.attr('src').replace('.png','_cursor.png'));
+            $('span.grade-text').removeClass('select');
+            $('span.grade-text.grade-'+grade).addClass('select');
+        },
+        error:function(){
+
+        }
+
+    })
+}
+function setWaitLoad(elem){
+
+    var width = $(elem).outerWidth();
+
+    var height = ($(elem).outerHeight() + $(elem).height())/2;
+
+    var html =
+        '<div class="catalog-waitload" ' +
+        'style="' +
+        'width:'+width+'px; height:'+$(elem).outerHeight()+'px;margin-top:-'+height+'px"> <img src="/img/site/load.gif"/></div>';
+    $(elem).append(html);
+}
+function clearWaitLoad(elem){
+    $(elem).find('div.catalog-waitload').remove();
+}
+
+function onEditableParameterClick(target,container,classname, controller){
+
+    if(target.hasClass('text')){
+        // редактируем текстовые данные
+        var content = target.html();
+        var width = target.width();
+        var height = target.height();
+        var align = target.css('text-align');
+        var bg = target.css('background');
+        target.addClass('editing').empty().append('<textarea></textarea>').find('textarea').append(content).
+        css({
+            width:width+'px', 'min-width':'60px', height:height+'px', display:'block',
+            padding:'0',border:'0',resize:'none','text-align':align,background:bg
+        }).focus();
+        target.on('change focusout keypress', 'textarea', function(e){
+            if(e.type=='keypress' && e.keyCode!=13) return true;
+            var newContent = $(this).val();
+            if(newContent=="") return true;
+            if(target.hasClass('float')){
+                if(isNaN(parseFloat(newContent))) var wrongFormat = true;
+            } else if(target.hasClass('int')){
+                newContent = newContent.replace(/\D+/g,"");
+                if(isNaN(parseInt(newContent))) wrongFormat = true;
+            }
+
+            target.empty().removeClass('editing').off('change focusout keypress', 'textarea');
+            if(wrongFormat) {
+                target.html(content);
+                return false;
+            } else {
+                target.html(newContent);
+            }
+            if(newContent==content || e.type=='keypress') return true;
+            var params = JSON.parse(container.attr('data-params'));
+            var id = params.id;
+            var cid = params.cid;
+            var name = classname+'['+target.attr('data-name')+']';
+            var idname  = classname+'[id]';
+            var cidname = classname+'[cid]';
+            var data = {};
+            data[idname] = id;
+            data[cidname] = cid;
+            var index = target.attr('data-id');
+            if(index===undefined) {
+                data[name] = newContent;
+            } else{
+                data[name] = {};
+                data[name][index] = newContent;
+            }
+            target.css('background','#FFD1D1');
+            $.ajax({method:'POST', url:currentLang+controller,
+                data:data,
+                success:function(r){
+                    var result = {state:'error'};
+                    try {result = JSON.parse(r)} catch(e){}
+                    if(result.state!='ok'){
+                        target.text(content);
+                    } else{
+                        switch(name){
+                            case 'Commodity[cons_table]':
+                                var commodity = target.closest('div.commodity-container');
+                                var select = commodity.find('select.commodity-cons-select');
+                                var option = select.find('option:first-child');
+                                option.val(result.data.coid);
+                                select.val(result.data.coid);
+                                if(result.data.cons_common>0){
+                                    option.removeAttr('disabled');
+                                }
+                                break;
+                        }
+                    }
+                    target.css('background','');
+                },
+                error:function(e){
+                    target.text(content);
+                    target.css('background','');
+                }
+            })
+
+        });
+    }
+
+}
+
+function onClickCloseFloatingManifest(e){
+
+    $(e).closest('div.floating-manifest').remove();
+}
+
+function onClickCreateBasket(e){
+    $('div.floating-select-family, div.floating-edit-family').remove();
+    var container = $('body').append('<div class="floating-select-family"></div>');
+
+    $.ajax({method:'GET', url:currentLang+'/cabinet/get-select-family',
+        success: function(r){
+            container.find('div.floating-select-family').empty().append(r);
+        },
+        error: function(e){
+            container.find('div.floating-select-family').empty().append(e.responseText);
+        }
+    })
+}
+function onSelectFamily(type){
+
+    $('div.floating-select-family, div.floating-edit-family').remove();
+    var container = $('#create-family-container').append('<div class="floating-edit-family"></div>');
+
+    $.ajax({method:'GET',url:currentLang+'/cabinet/get-edit-family',data:{type:type},
+        success: function(r){
+            container.find('div.floating-edit-family').empty().append(r);
+
+            var reactContainer = document.getElementById('edit-family-container');
+            var d = reactContainer.dataset;
+            var family = {token:d.token, type:d.type, grade:d.grade, mode:d.mode,
+                adults:     JSON.parse(d.adults),
+                children:   JSON.parse(d.children),
+                pets:       JSON.parse(d.pets),
+                csrf:       $('meta[name="csrf-token"]').attr('content'),
+            };
+
+            ReactDOM.render(React.createElement(EditFamily, {
+                family:family,
+                createController:d.createController,
+            }), reactContainer);
+
+
+        },
+        error: function(e){
+            container.find('div.floating-edit-family').empty().append(e.responseText);
+        }
+    })
+
+}
+
+function onClickShowPassword(button){
+    var input = $(button).parent().prev()[0];
+    console.log('press show password', $(button), input);
+    if(input.type=='password'){
+        input.type='text';
+        button.textContent = 'Скрыть';
+    }else{
+        input.type='password';
+        button.textContent = 'Показать';
+    }
+}
+
+function onClickForgotPassword(){
+    console.log('forgot password');
+
+    var container = document.getElementById('main-layout-modal-dialog');
+
+    ReactDOM.render(React.createElement(PasswordResetDialog,{}), container)
+}
+
+$(document).ready(function(){
+    var lang = $('#current-language').attr('data-lang');
+    lang = (lang !== undefined?lang:'ru');
+    currentLang = '/' + lang;
+
+    $.datepicker.setDefaults($.datepicker.regional[lang]);
+
+    $('label.js-checkbox-controls-after input').change(function(e){
+        var label = $(e.currentTarget).closest('label.js-checkbox-controls-after');
+        var state = label.find('input').is(':checked');
+        if(state){
+            label.next().slideDown(200);
+        } else {
+            label.next().slideUp(200);
+        }
+    });
+
+    $('#start-progress-indicator').remove();
+
+    // запоминаем текущую кабинетную вкладку
+    $('li.cabinet-tabs-label').click(function(e){
+        var target = $(e.currentTarget);
+
+        if(!target.hasClass('active')){
+            var id = target.attr('data-id');
+            $.ajax({method:'GET',url:'/cabinet/save-cabinet-tab',data:{'User[cabinet_tab]':id}})
+        }
+        return true;
+    });
+    // запоминаем текущую офисную вкладку
+    $('li.office-tabs').click(function(e){
+        var target = $(e.currentTarget);
+        if(!target.hasClass('active')){
+            var id = target.attr('data-id');
+            var mode = target.attr('data-mode');
+            var data = {};
+            data['User['+mode+'_tab]'] = id;
+            $.ajax({method:'GET',url:'/cabinet/save-office-tab',data:data})
+        }
+        return true;
+    });
+
+    var basket = $('div.user-basket-body');
+    basket.each(function(i,e, a){
+        var scroll = $(e).attr('data-offset');
+        if(scroll!==undefined){
+            e.scrollTop = scroll;
+        }
+    });
+
+    $('div.vkontakte-au').click(function(){
+        $('body').append(
+            '<div class="progress-login-container inst-vk">' +
+                '<p><img class="preloader-animate" src="/img/preloader/25.svg"/> ЖДЕМ ОТВЕТА ОТ VKONTAKTE...</p>' +
+            '</div>')
+    });
+    $('div.twitter-au').click(function(){
+        $('body').append(
+            '<div class="progress-login-container inst-vk">' +
+                '<p><img class="preloader-animate" src="/img/preloader/25.svg"/> ЖДЕМ ОТВЕТА ОТ TWITTER...</p>' +
+            '</div>')
+    });
+    $('div.facebook-au').click(function(){
+        $('body').append(
+            '<div class="progress-login-container inst-vk">' +
+                '<p><img class="preloader-animate" src="/img/preloader/25.svg"/> ЖДЕМ ОТВЕТА ОТ FACEBOOK...</p>' +
+            '</div>')
+    });
+
+    var modal = document.getElementById('main-layout-modal-dialog');
+    if(modal) {
+        var content = modal.dataset.flash;
+        if(content) {
+            var flash = JSON.parse(content);
+            if (window.InfoModal) {
+                ReactDOM.render(React.createElement(window.InfoModal, {
+                    type: flash.type==='error'?'error':'info',
+                    content:flash.content}), modal)
+            }
+        }
+    }
+});
+
+function onChangeDeliveryTime(id,e,mode){
+    var value = $(e).val();
+    $('select.delivery-time').attr('disabled','disabled');
+    var data = {};
+    data['id'] = id;
+    data['ActiveDelivery['+mode+']'] = value;
+    $.ajax({methid:'GET',url:'/cabinet/set-delivery-time',data:data,
+        success:function(e){
+            location.reload();
+        },
+        error:function(e){
+            location.reload();
+        }
+    })
+}
+function onChangeDeliveryDate(e){
+    var input = $(e.currentTarget).find('input');
+    var id = input.attr('data-id');
+    $.ajax({methid:'GET',url:'/cabinet/set-delivery-date',data:{id:id, 'ActiveDelivery[date]':input.val()},
+        success:function(e){
+            location.reload();
+        },
+        error:function(e){
+            location.reload();
+        }
+    })
+
+}
+
+function changeEditableData(arg){
+    var minusButton = arg.element.find('.'+arg.token+'-minus');
+     var input = arg.element.find('input.'+arg.token+'-input');
+    var plusButton = arg.element.find('.'+arg.token+'-plus');
+
+    var value = parseInt(input.val());
+
+    if(isNaN(value)){
+        return;
+    }
+    if(arg.mode=='minus'){
+        value--;
+    } else if(arg.mode=='plus'){
+        value++;
+    }
+    if(value<arg.min){
+        minusButton.attr('disabled','');
+        plusButton.removeAttr('disabled');
+        value=arg.min;
+    } else if(value>arg.max){
+        value=arg.max;
+        minusButton.removeAttr('disabled');
+        plusButton.attr('disabled','');
+    } else{
+        plusButton.removeAttr('disabled');
+        minusButton.removeAttr('disabled');
+    }
+    switch(arg.term){
+        case 'days':
+            input.next().html(daysLang(value));
+        break;
+    }
+
+    input.val(value);
+    var data = {};
+
+    data[arg.classname+'[id]']      = arg.id;
+    data[arg.classname+'[bid]']     = arg.bid;
+    data[arg.classname+'['+arg.token+']'] = value;
+    $.ajax({
+        url:currentLang+arg.controller
+        //    '/site/set-basket-param'
+        ,method:'POST',
+        'data':data,
+        success: function(res){
+            if(res=='ok'){
+                if(arg.callback!==undefined){
+                    window[arg.callback](arg.element, value);
+                }
+            } else {location.reload();}
+        },
+        error:function(e){location.reload();}
+    })
+
+}
+function daysLang(value) {
+
+    var lang = $('#current-language').attr('data-lang');
+
+     if (lang == 'ua') {
+        var dayTerm = 'днiв';
+        if (value < 5 || value > 20) {
+            switch (value % 10) {
+                case 1:
+                    dayTerm = 'день';
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    dayTerm = 'дні';
+                    break;
+            }
+        }
+        return dayTerm;
+    } else if (lang=='ru') {
+        dayTerm = 'дней';
+        if (value < 5 || value > 20) {
+            switch (value % 10) {
+                case 1:
+                    dayTerm = 'день';
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    dayTerm = 'дня';
+                    break;
+            }
+        }
+        return dayTerm;
+    } else {
+         if(value==1){return 'day';}
+         else{ return 'days'}
+     }
+}
+
+function goodsLang(value) {
+
+    var lang = $('#current-language').attr('data-lang');
+
+     if (lang == 'ua') {
+        var term = 'товаров';
+        if (value < 5 || value > 20) {
+            switch (value % 10) {
+                case 1:
+                    term = 'товар';
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    term = 'товара';
+                    break;
+            }
+        }
+        return term;
+    } else if (lang=='ru') {
+        term = 'товаров';
+        if (value < 5 || value > 20) {
+            switch (value % 10) {
+                case 1:
+                    term = 'товар';
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    term = 'товара';
+                    break;
+            }
+        }
+        return term;
+    } else {
+         if(value==1){return 'goods';}
+         else{ return 'goods'}
+     }
+}
+
+function addFloatingShadow(s){
+    s.before('<div class="shadow-can-close" onclick="$(this).next().empty().hide();$(this).remove()"></div>');
+}
+
+
+function telValidate(phone){
+    var re = /^\d[\d\(\)\ -]{4,12}\d$/;
+    return re.test(phone);
+ }
+
+
+function ajaxError(e){
+    var OpenWindow = window.open("about:blank", "mywin", '');
+    OpenWindow.document.body.innerHTML = e;
+    //OpenWindow.init();
+}
+
+
+function filterTable(filter, tableSelector){
+    var table = $(tableSelector);
+    var value = $(filter).val().toLowerCase();
+    table.find('tbody tr').each(function (k,e){
+        var textItems = $(e).find('.filter-value');
+        for(var i=0;i<textItems.length;i++){
+            var text = textItems[i].innerText;
+            if(text.toLowerCase().indexOf(value)>=0){
+                $(e).show();
+                return;
+            }
+        }
+        $(e).hide()
+    })
+}
+function filterDeleted(button, tableSelector){
+    var table = $(tableSelector);
+    var state = $(button).hasClass('btn-success');
+    if(state){
+        $(button).removeClass('btn-success');
+    }else{
+        $(button).addClass('btn-success');
+    }
+    table.find('tbody tr').each(function (k,e){
+        var status = $(e).find('.status').attr('data-status');
+        if(state && status == 255) {
+            $(e).addClass('hide-by-status');
+        } else {
+            $(e).removeClass('hide-by-status');
+        }
+    })
+}
+
+
+function filterTableReset(e) {
+    $(e).val('').trigger('keyup');
+}
+
+function cDate(str){
+    if(typeof str === 'string'){
+        return new Date(str.replace(/-/g ,'/'));
+    }else{
+        return "---";
+    }
+}
+
+function sd(date, smooth){
+    if(isNaN(date)){
+        return "---"
+    }
+    var now= new Date();
+    switch(Math.round(now/86400000-date/86400000)) {
+        case 2:
+            var out = 'позавчера';
+            break;
+        case 1:
+            out = 'вчера';
+            break;
+        case 0:
+            out = 'сегодня';
+            break;
+        case -1:
+            out = 'завтра';
+            break;
+        case -2:
+            out = 'послезавтра';
+            break;
+        default:
+            if(smooth){
+                out = dateMonths(date);
+            }else {
+                var day = date.getDate();
+                var month = date.getMonth() + 1;
+                out = (day > 9 ? day : ('0' + day)) + '-' + (month > 9 ? month : ('0' + month)) + '-' + date.getFullYear();
+                break;
+            }
+    }
+
+    return out.indexOf('NaN')>=0?'---':out;
+
+}
+
+function sds(date){
+    if(isNaN(date)){return "---"}
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    return (day > 9 ? day : ('0' + day)) + '-' + (month > 9 ? month : ('0' + month)) + '-' + date.getFullYear();
+}
+
+function sdt(date){
+    if(isNaN(date)){
+        return "---"
+    }
+    var now= new Date();
+    switch(Math.round(now/86400000-date/86400000)) {
+        case 2:
+            var out = 'позавчера';
+            break;
+        case 1:
+            out = 'вчера';
+            break;
+        case 0:
+            out = 'сегодня';
+            break;
+        case -1:
+            out = 'завтра';
+            break;
+        case -2:
+            out = 'послезавтра';
+            break;
+        default:
+            var day = date.getDate();
+            var month = date.getMonth()+1;
+            out = (day>9?day:('0'+day)) + '-'+(month>9?month:('0'+month)) +'-'+date.getFullYear();
+            break;
+    }
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+
+    return out+' '+(hours>9?hours:('0'+hours)) +':'+(minutes>9?minutes:('0'+minutes));
+
+}
+function mysqld(date){
+    var day = date.getDate();
+    var month = date.getMonth()+1;
+    return date.getFullYear() + '-' + (month>9?month:('0'+month)) + '-' + (day>9?day:('0' + day));
+
+}
+function dateMonths(date){
+    if(isNaN(date)){
+        return "---"
+    }
+    var day = date.getDate();
+    switch(date.getMonth()){
+        case 0:
+            return day+' января';
+        case 1:
+            return day+' февраля';
+        case 2:
+            return day+' марта';
+        case 3:
+            return day+' апреля';
+        case 4:
+            return day+' мая';
+        case 5:
+            return day+' июня';
+        case 6:
+            return day+' июля';
+        case 7:
+            return day+' августа';
+        case 8:
+            return day+' сентября';
+        case 9:
+            return day+' октября';
+        case 10:
+            return day+' ноября';
+        case 11:
+            return day+' декабря';
+    }
+}
+
+window.handleErrorsAlert = function(e){alert(e.responseText)};
+
+function captureDateTime(id, format) {return _captureDateTime(id, format, true);}
+function captureDate(id, format) {return _captureDateTime(id, format, false);}
+function _captureDateTime(id,format,time) {
+    var date = transformDate(id.val());
+    if (date==null) {
+        id.css('background','rgba(255, 0, 0, 0.23)');
+        return;
+    } else {
+        id.css('background','');
+        if (time) {
+            id.val(date.toLocaleDateString()+' '+getTimeString(date));
+        } else {
+            id.val(date.toLocaleDateString());
+        }
+    }
+    var month = date.getMonth()+1;
+    month = (month<10)?('0'+month):(month);
+    var day = date.getDate();
+    day = (day<10)?('0'+day):(day);
+
+    if (format=='date') return date;
+    if (format=='yyyy-mm-dd hh:mm') return date.getFullYear()+'-'+month+'-'+ day+
+        ' '+date.getHours()+':'+date.getMinutes();
+    if (format=='yyyy-mm-dd') return date.getFullYear()+'-'+month+'-'+ day;
+    if (format=='dd.mm.yyyy') return day+'.'+month+'.'+ date.getFullYear();
+    return null;
+
+}
+function transformDate(datestring) {
+
+    if (datestring == null) {
+        return new Date(0);
+    }
+
+    var dateArray = datestring.split(/\/|\.|\s|:|,|-/, 6);
+
+    function getTime(date) {
+        if (dateArray.length>2) {
+            var hours = parseInt(dateArray[1]);
+            var minutes = parseInt(dateArray[2]);
+            if (!isNaN(hours) && !isNaN(minutes)) date.setHours(hours, minutes, 0, 0);
+        }
+        if (dateArray.length > 3) {
+            var seconds = parseInt(dateArray[3]);
+            if (!isNaN(seconds)) date.setSeconds(seconds, 0);
+        }
+        return date;
+    }
+    var date = new Date();
+    switch (dateArray[0].toLowerCase()) {
+        case 'позавчера':
+            date.setDate(date.getDate() - 2);
+            getTime(date);
+            break;
+        case 'вчера':
+            date.setDate(date.getDate() - 1);
+            getTime(date);
+            break;
+        case 'сегодня':
+            getTime(date);
+            break;
+        case 'завтра':
+            date.setDate(date.getDate() + 1);
+            getTime(date);
+            break;
+        case 'послезавтра':
+            date.setDate(date.getDate() + 2);
+            getTime(date);
+            break;
+        default:
+            if (dateArray[0].length > 3) {
+                var day = parseInt(dateArray[2], 10);
+                var year = parseInt(dateArray[0], 10);
+            } else {
+                day = parseInt(dateArray[0], 10);
+                year = parseInt(dateArray[2], 10);
+            }
+
+
+            var month = parseInt(dateArray[1], 10) - 1;
+            if (year < 100) year += 2000;
+
+            if ((day < 1) || (day > 31) || (year < 1971) || (year > 2099) || (isNaN(day)) || (isNaN(year))) return null;
+            //          var date = new Date();
+            if ((month < 0) || (month > 11) || (isNaN(month))) {
+                var stringMonth = dateArray[1].toLocaleUpperCase();
+
+                if (stringMonth.match(/^ЯН|^ЕН|^ЙЕН|^JAN|^YAN|^zy/) != null) month = 0;
+                else if (stringMonth.match(/^ФЕ|^ФИ|^FE|^at/) != null) month = 1;
+                else if (stringMonth.match(/^МАР|^MAR|^vfh/) != null) month = 2;
+                else if (stringMonth.match(/^АП|^AP|^fg/) != null) month = 3;
+                else if (stringMonth.match(/^МА|^MA|^vf/) != null) month = 4;
+                else if (stringMonth.match(/^ИЮН|^ЭЮН|^JUN|^b.y/) != null) month = 5;
+                else if (stringMonth.match(/^ИЮЛ|^ЭЮЛ|^JUL|^b.k/) != null) month = 6;
+                else if (stringMonth.match(/^АВ|^АФ|^AU|^fd/) != null) month = 7;
+                else if (stringMonth.match(/^СЕ|^CИ|^SEP|^CEP|^cty/) != null) month = 8;
+                else if (stringMonth.match(/^ОК|^АКТ|^OCT|^OKT|^jr/) != null) month = 9;
+                else if (stringMonth.match(/^НОЯ|^НАЯ|^NOW|^NOV|^yj/) != null) month = 10;
+                else if (stringMonth.match(/^ДЕ|^ДИ|^DE|^DI|^lt/) != null) month = 11;
+                else return null;
+            }
+            date.setFullYear(year, month, day);
+            if (dateArray.length > 4) {
+                var hours = parseInt(dateArray[3]);
+                var minutes = parseInt(dateArray[4]);
+                if (!isNaN(hours) && !isNaN(minutes)) date.setHours(hours, minutes, 0, 0);
+            }
+            if (dateArray.length > 5) {
+                var seconds = parseInt(dateArray[5]);
+                if (!isNaN(seconds)) date.setSeconds(seconds, 0);
+            }
+    }
+    return date;
+}
+function smoothDate(date,format) {
+    if (date===null) return 'Ошибка даты';
+    var smoothDays = ['Позавчера', 'Вчера', 'Сегодня', 'Завтра', 'Послезавтра'];
+    var daysOfWeek = ['воскресенье','понедельник','вторник',
+        'среда','четверг','пятница','суббота'];
+    var months = ['января', 'февраля', 'марта','апреля','мая','июня','июля',
+        'августа','сентября','октября','ноября','декабря'];
+    var now = new Date();
+    var minutes = date.getMinutes();
+    var hours = date.getHours();
+    var day = date.getDate();
+    var dayOfWeek = date.getDay();
+    var month = date.getMonth();
+    var year = date.getFullYear();
+    var smooth = false;
+    var disabled = false;
+    var parts = format.split(/%/);
+
+    var out = '';
+    for (var i in parts) {
+        switch (parts[i]) {
+            case 'smooth':
+                now.setDate(now.getDate()-2);
+                for (var j=0; j<5; j++) {
+                    if (date.getDate()==now.getDate() &&
+                        date.getMonth()==now.getMonth() &&
+                        date.getFullYear()==now.getFullYear()) {
+                        smooth=true;
+                        out += smoothDays[j];
+                        break;
+                    }
+                    now.setDate(now.getDate()+1);
+                }
+                break;
+            case "+":
+                disabled = false;
+                break;
+            case "-":
+                if (smooth) disabled = true;
+                break;
+            case 'day':
+                if (disabled) break;
+                out += daysOfWeek[dayOfWeek];
+                break;
+            case 'd':
+                if (disabled) break;
+                if (day<10) {out += 0;}
+                out += day;
+                break;
+            case 'm':
+                if (disabled) break;
+                if (month < 9) {out += 0;}
+                out += month+1;
+                break;
+            case 'month':
+                if (disabled) break;
+                out += months[month];
+                break;
+            case 'year':
+                if (disabled) break;
+                out += year;
+                break;
+            case 'hr':
+                if (disabled) break;
+                out += hours;
+                break;
+            case 'min':
+                if (disabled) break;
+                if (minutes<10) {out+=0;}
+                out += minutes;
+                break;
+            default:
+                if (disabled) break;
+                out += parts[i];
+        }
+    }
+    return out;
+}
+function getTimeString(date) {
+    var hours = date.getHours();
+    var minutes=date.getMinutes();
+    var out = '';
+    if (hours<10) {out += '0'}
+    out += hours+':';
+    if (minutes<10) {out += '0'}
+    out += minutes;
+    return out;
+}
+function sm(value){
+    var money2 = parseFloat(value).toFixed(2);
+    var money0 = Math.round(money2);
+    if(money2==money0){
+
+        return money0.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+
+    }else {
+        return money2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
+}
+function sv(value){
+    var money3 = parseFloat(value).toFixed(3);
+    var money0 = Math.round(money3);
+    if(money3==money0){
+
+        return money0.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");x
+    }else {
+        return money3.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
+}
+
+function enterPromocode(e,bid){
+    var dlg = $('#main-layout-modal-dialog').empty().append(
+        '<div class="enter-promocode-dialog">' +
+        '   <input class="form-control promo-input" placeholder="xxx-xxx"/>' +
+        '   <p class="dlg-error-msg"></p>' +
+        '</div>'
+    ).dialog({
+
+        maxWidth:360,
+        height:200,
+        title:'ПРОМОКОД',
+        modal:true,
+        resizable:false,
+        buttons:{
+            Отправить:function(){
+                var code = dlg.find('input').val().replace(/[\s\W]/gi,'');
+                if(code.length!=6){
+                    return;
+                }
+                $.ajax({
+                    url:window.currentLang+'/basket/add-promocode/',
+                    data:{bid:bid, code:code},
+                    success:function(r){
+                        try{
+                            var result = JSON.parse(r);
+                            if(result.status == 'ok'){
+                                location.reload();
+                                return;
+                            }
+                            var msg = result.msg;
+                        }catch(e){
+                            msg = 'Неудачно! Попробуйте еще раз!'
+                        }
+                        dlg.find('p.dlg-error-msg').html(msg);
+
+                    },
+                    error:function(e){
+                        //alert(e.responseText);
+                        location.reload();
+                    }
+                })
+            },
+            //Закрыть:function(){
+             //   dlg.dialog('close');
+           // }
+        }
+
+    })
+}
+
+function enterPromocodeR(e,bid){
+    var dlg = $('#main-layout-modal-dialog').empty().append(
+        '<div class="enter-promocode-dialog">' +
+        '   <input class="form-control promo-input" placeholder="xxx-xxx"/>' +
+        '   <p class="dlg-error-msg"></p>' +
+        '</div>'
+    ).dialog({
+
+        width:570,
+        height:470,
+        title:'',
+        modal:true,
+        resizable:false,
+        dialogClass:'promocode-dialog',
+        buttons:{
+            Отправить:function(){
+                var code = dlg.find('input').val().replace(/[\s\W]/gi,'');
+                if(code.length!=6){
+                    return;
+                }
+                $.ajax({
+                    url:window.currentLang+'/basket/add-promocode/',
+                    data:{bid:bid, code:code},
+                    success:function(r){
+                        try{
+                            var result = JSON.parse(r);
+                            if(result.status == 'ok'){
+                                window.ee.emit('UserBasket.addDiscount',{discount:result.discount, name:result.name});
+                                dlg.dialog('close');
+                                return;
+                            }
+                            var msg = result.msg;
+                        }catch(e){
+                            msg = 'Неудачно! Попробуйте еще раз!'
+                        }
+                        dlg.find('p.dlg-error-msg').html(msg);
+                    },
+                    error:function(e){}
+                })
+            },
+         //   Закрыть:function(){
+         //       dlg.dialog('close');
+        //    }
+        }
+    })
+}
+
+function _t_(input) {
+    return input;
+}

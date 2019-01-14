@@ -1,0 +1,377 @@
+body {
+    margin: 0;
+}
+
+.cls-1, .cls-63 {
+    fill: none;
+}
+
+.cls-2 {
+    isolation: isolate;
+}
+
+.cls-3, .cls-75 {
+    fill: #4c4072;
+}
+
+.cls-4 {
+    fill: #006838;
+}
+
+.cls-5 {
+    fill: #009444;
+}
+
+.cls-6 {
+    fill: #808285;
+}
+
+.cls-7 {
+    fill: #d1d3d4;
+}
+
+.cls-8 {
+    fill: #939598;
+}
+
+.cls-9 {
+    fill: #39b54a;
+}
+
+.cls-10 {
+    fill: #e92143;
+}
+
+.cls-11 {
+    fill: #414042;
+}
+
+.cls-12 {
+    fill: #a9c5e7;
+}
+
+.cls-13 {
+    fill: #c1282d;
+}
+
+.cls-14 {
+    fill: #9d1f60;
+}
+
+.cls-15 {
+    fill: #f15b27;
+}
+
+.cls-16 {
+    fill: #e6e7e8;
+}
+
+.cls-17 {
+    fill: #077fb6;
+}
+
+.cls-18 {
+    fill: #c49a6c;
+}
+
+.cls-19 {
+    fill: #f3f3f3;
+}
+
+.cls-20 {
+    fill: #989898;
+}
+
+.cls-21 {
+    fill: #ffce07;
+}
+
+.cls-22, .cls-64, .cls-67, .cls-68 {
+    fill: #fff;
+}
+
+.cls-23, .cls-35 {
+    fill: #ccc;
+}
+
+.cls-24 {
+    fill: #333;
+}
+
+.cls-25 {
+    fill: #ee2e24;
+}
+
+.cls-26 {
+    fill: #58595b;
+}
+
+.cls-27 {
+    fill: #fff200;
+}
+
+.cls-28 {
+    fill: #4e4e4e;
+}
+
+.cls-29 {
+    fill: #febc12;
+}
+
+.cls-30 {
+    fill: #b4b4b4;
+}
+
+.cls-31 {
+    fill: #f5f6f6;
+}
+
+.cls-32 {
+    fill: #f1f0f0;
+}
+
+.cls-33 {
+    fill: #e6e6e5;
+}
+
+.cls-33, .cls-35, .cls-80, .cls-81, .cls-84 {
+    mix-blend-mode: multiply;
+}
+
+.cls-34 {
+    fill: #383938;
+}
+
+.cls-36 {
+    fill: #214f67;
+}
+
+.cls-37 {
+    fill: #2f769a;
+}
+
+.cls-38 {
+    fill: #3f9ccc;
+}
+
+.cls-39 {
+    fill: #fff4ee;
+}
+
+.cls-40 {
+    fill: #ef4136;
+}
+
+.cls-41 {
+    fill: #27aae1;
+}
+
+.cls-42 {
+    fill: #018fb5;
+}
+
+.cls-43 {
+    clip-path: url(#clip-path);
+}
+
+.cls-44 {
+    fill: #74d0f3;
+}
+
+.cls-45 {
+    fill: #3e698a;
+}
+
+.cls-46 {
+    clip-path: url(#clip-path-2);
+}
+
+.cls-47 {
+    clip-path: url(#clip-path-3);
+}
+
+.cls-48 {
+    clip-path: url(#clip-path-4);
+}
+
+.cls-49 {
+    clip-path: url(#clip-path-5);
+}
+
+.cls-50 {
+    clip-path: url(#clip-path-6);
+}
+
+.cls-51 {
+    clip-path: url(#clip-path-7);
+}
+
+.cls-52 {
+    clip-path: url(#clip-path-8);
+}
+
+.cls-53 {
+    clip-path: url(#clip-path-9);
+}
+
+.cls-54 {
+    fill: #e7ecec;
+}
+
+.cls-55 {
+    fill: #f26823;
+}
+
+.cls-56, .cls-59 {
+    fill: #afb7bc;
+}
+
+.cls-57 {
+    fill: #80868b;
+}
+
+.cls-58 {
+    fill: #231f20;
+}
+
+.cls-59 {
+    stroke: #262262;
+    stroke-width: 0.5px;
+}
+
+.cls-59, .cls-63 {
+    stroke-miterlimit: 10;
+}
+
+.cls-60 {
+    fill: #6c5c4c;
+}
+
+.cls-61 {
+    fill: #c2b59b;
+}
+
+.cls-62 {
+    clip-path: url(#clip-path-10);
+}
+
+.cls-63 {
+    stroke: #754c29;
+    stroke-linecap: round;
+    stroke-width: 2px;
+}
+
+.cls-64, .cls-68, .cls-75 {
+    font-size: 14px;
+}
+
+.cls-64, .cls-68 {
+    font-family: NotoSans-Bold, Noto Sans;
+    font-weight: 700;
+}
+
+.cls-64 {
+    letter-spacing: 0.05em;
+}
+
+.cls-65 {
+    letter-spacing: 0.05em;
+}
+
+.cls-66 {
+    letter-spacing: 0.04em;
+}
+
+.cls-67 {
+    font-size: 30px;
+    font-family: ArialRoundedMTBold, Arial Rounded MT Bold;
+}
+
+.cls-68, .cls-73 {
+    letter-spacing: 0.04em;
+}
+
+.cls-69 {
+    letter-spacing: 0.04em;
+}
+
+.cls-70 {
+    letter-spacing: 0.02em;
+}
+
+.cls-71 {
+    letter-spacing: 0.05em;
+}
+
+.cls-72 {
+    letter-spacing: 0.05em;
+}
+
+.cls-74 {
+    fill: #58bf96;
+}
+
+.cls-75 {
+    font-family: NotoSans, Noto Sans;
+}
+
+.cls-76 {
+    letter-spacing: -0.01em;
+}
+
+.cls-77 {
+    letter-spacing: -0.02em;
+}
+
+.cls-78 {
+    fill: #384650;
+}
+
+.cls-79 {
+    fill: #fffef5;
+}
+
+.cls-80 {
+    fill: #a59b34;
+    opacity: 0.07;
+}
+
+.cls-82, .cls-84 {
+    fill: #f4f1e7;
+}
+
+.cls-83 {
+    fill: #eae8d6;
+}
+
+.cls-85 {
+    fill: #fbaf2e;
+}
+
+.cls-86 {
+    fill: #754c29;
+}
+
+.cls-87, .cls-89 {
+    fill: #262262;
+}
+
+.cls-88 {
+    fill: #1b75bc;
+}
+
+.cls-89 {
+    fill-opacity: 0.4;
+}
+
+.cls-90 {
+    fill: #839594;
+}
+
+.cls-91 {
+    fill: #c7c9c7;
+}
+
+.cls-92 {
+    fill: #8b5e3c;
+}

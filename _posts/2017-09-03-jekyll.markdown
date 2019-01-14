@@ -1,0 +1,71 @@
+---
+layout: page
+title:  "Jekyll!"
+
+date:   2017-09-03 22:21:31 +0200
+categories: cat-ipsum1
+---
+
+
+## Ссылки в Jakyll:
+вход:
+ {% raw %}
+~~~html
+{{ site.url }}{% link _my_collection/solar_home/index.html %}
+~~~
+ {% endraw %}
+
+&raquo; на выходе:
+````
+http://localhost:4000/Works/solar_home/index.html
+````
+
+| &nbsp; | &nbsp;
+|:-|-:
+| site.url| "http://localhost:4000/"
+| _my_collection | "Works/"
+| solar_home/ | "solar_home/index.html"
+
+------------------------------------------------------
+<br>
+вход:
+ {% raw %}
+~~~html
+  {{ '/Works/solar_home' | relative_url }}
+~~~
+ {% endraw %}
+
+&raquo; на выходе:
+````
+/Works/solar_home
+````
+
+------------------------------------------------------
+<br>
+вход:
+ {% raw %}
+~~~html
+ {{ '/assets/main.css' | relative_url }}
+~~~
+ {% endraw %}
+
+&raquo; на выходе:
+````
+/assets/main.css
+````
+
+------------------------------------------------------
+<br>
+вход:
+ {% raw %}
+~~~html
+  {{ page.url | replace:'index.html','' | absolute_url }}
+~~~
+ {% endraw %}
+
+&raquo; на выходе:
+````
+http://localhost:4000/Works/
+````
+
+------------------------------------------------------

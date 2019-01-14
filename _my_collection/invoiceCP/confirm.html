@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>confirm</title>
+		<link href="css/style.css" type="text/css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="content_box">
+			<div class="privat_content_box">
+				<div class="header_box">
+					<div class="header_content">
+						  <a href="#" class="logo_link"><img src="images/logo.png"/></a>
+						<div class="user_box">
+							<div class="regis_menu">
+								<a href="#" class="menu_header_active">Миниофис</a>
+								<a href="#" class="menu_header">Тарифы</a>
+								<a href="#" class="menu_header">Возможности</a>
+								<a href="#" class="menu_header_vxod">Выход</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="e_content">
+					<div class="confirm">
+						<div class="confirmWraper">
+							<h1 class="confirmTitle">Поздравляем, счет успешно оплачен!</h1>
+								<div class="confirmText">
+									<p><span class="confirmTextLeft invoiceL">Счет №16680</span> <span class="confirmTextRight invoiceR">от 2013-01-28 12:23:58</span></p>
+									<p><span class="confirmTextLeft sumL">Сумма:</span> <span class="confirmTextRight sumR">100 UAH</span></p>
+									<p><span class="confirmTextLeft productL">Товар:</span> <span class="confirmTextRight productR">Стул офисный</span></p>
+									<p><span class="confirmTextLeft shopL">Магазин:</span> <span class="confirmTextRight shopR">ООО МебельДнепр</span></p>
+								</div>
+						</div>  
+								<div class="button_1">Перейти на сайт</div>
+					</div>	
+
+
+					<div class="contents"> 
+
+						<a href="#" class="cardVisaMaster"><span>Карта Visa / MasterCard</span></a>
+						<a href="#" class="cardP24"><span>Приват 24</span></a>
+						<a href="#" class="cardP24Yur"><span>Приват 24 Юр.лица</span></a>
+						<div class="cardForm">  
+							<div class="formLine" style="height: auto;">
+								<div id="help_img1" style="display: none; background: url(images/card_field.png) no-repeat; height: 122px; width: 197px; position: absolute; left: 773px; top: 119px;">
+								</div>
+								<div id="help_img2" style="display: none; background: url(images/cvv_field.png) no-repeat; height: 145px; width: 235px; position: absolute; left: 773px; top: 119px;"></div>	  
+								<div id="help_img3" style="display: none; background: url(images/card_date.png) no-repeat; height: 145px; width: 235px; position: absolute; left: 773px; top: 119px;"></div>
+								<div class="label"> 
+									<span>Номер Вашей карты:</span> 
+								</div>
+								<div class="inputs">
+									<input maxlength="16" type="text" id="card_field" onkeyup="this.value=this.value.replace(/\W|[a-z]/ig,'')" value="" onchange="check_card_pb(this.value)" onfocus="document.getElementById('help_img1').style.display = 'block'" onblur="document.getElementById('help_img1').style.display = 'none'" style="float: none;">
+									<div class="red" id="card_warn"></div>
+								</div> 
+							</div>
+							
+							<div class="formLine date">
+								<div class="label"> 
+									<span> Срок действия:</span> 
+								</div>
+								<div class="inputs date"> 
+									<select name="datemon" id="dm_sel" onclick="document.getElementById('help_img3').style.display = 'block'" onblur="document.getElementById('help_img3').style.display = 'none'">
+									
+										<option value="01">01 </option> 
+									
+										<option value="02">02 </option> 
+									
+										<option value="03">03 </option> 
+									
+										<option value="04">04 </option> 
+									
+										<option value="05">05 </option> 
+									
+										<option value="06">06 </option> 
+									
+										<option value="07">07 </option> 
+									
+										<option value="08">08 </option> 
+									
+										<option value="09">09 </option> 
+									
+										<option value="10">10 </option> 
+									
+										<option value="11">11 </option> 
+									
+										<option value="12">12 </option> 
+									
+									</select>
+									<select name="datemon" id="dy_sel" onclick="document.getElementById('help_img3').style.display = 'block'" onblur="document.getElementById('help_img3').style.display = 'none'">
+									
+										<option value="2013">2013 </option> 
+									
+										<option value="2014">2014 </option> 
+									
+										<option value="2015">2015 </option> 
+									
+										<option value="2016">2016 </option> 
+									
+										<option value="2017">2017 </option> 
+									
+										<option value="2018">2018 </option> 
+									
+										<option value="2019">2019 </option> 
+									
+										<option value="2020">2020 </option> 
+									
+										<option value="2021">2021 </option> 
+									
+										<option value="2022">2022 </option> 
+									
+									</select> 
+									 <div class="red" id="m_y_warn"></div>
+								</div>  
+							</div>
+							<div class="formLine">
+								<div class="label"> 
+									<span>CW2/CVC2:</span> 
+								</div>
+								<div class="inputs">
+									<input id="cvv_field" maxlength="3" type="password" size="4" onkeyup="this.value=this.value.replace(/\W|[a-z]/ig,'')" onfocus="document.getElementById('help_img2').style.display = 'block'" onblur="document.getElementById('help_img2').style.display = 'none'" style="float: none;">
+									 <div class="red" id="cvv_warn"></div>
+								</div>  
+							</div> 
+						</div>	 
+						<div id="smsConfirm" style="display:block;"> 
+							<div class="formLine">
+								<div class="label"> 
+									<span>Телефон:</span> 
+								</div> 
+								<div class="inputs" id="phone_div">
+									<input id="phone_field" type="text" onkeyup="this.value=this.value.replace(/\W|[a-z]/ig,'')" name="short_phone" maxlength="13" value="+380"> 
+								 	<div class="red" id="phone_warn"></div>
+								</div> 
+							</div> 
+						 	<div class="formLine">
+								<div class="label"> 
+									<span>Код подтверждения:</span> 
+								</div>
+								<div class="inputs" id="otp_div">
+									<input id="otp_field" readonly="readonly" maxlength="8" size="9" type="text" onkeyup="this.value=this.value.replace(/\W|[a-z]/ig,'')" name="sms_parol" style="float: none;"> 
+									<div class="red" id="otp_warn"></div>
+								</div>  
+							</div> 
+						</div> 
+						<div class="formLine" style=" height: auto;">
+							<div class="label"> 
+								<!-- <a onclick="document.getElementById('cancel_form').submit()" style="vertical-align: -24px; color: #484848; cursor: pointer;">&lt; Назад</a>  -->
+							</div>
+						 
+								<div class="buttonsLine">
+									<div class="next">
+										<!-- <a onclick="document.getElementById('mains').submit(); return false" class="button edit_butt_next">Оплатить</a>  -->
+										<!-- <a href='#' class="button edit_butt_next">Подтвердить</a>  -->
+										<div class="button_1"> <a href='#' >Подтвердить</a></div>
+									</div>
+								</div>
+						 
+						</div>	 
+					</div> 
+				</div>
+			</div>
+			
+			
+			<div class="footer_content">
+				<div class="pr_footer">
+					<div class="contact_phone">
+						<img src="images/logo_oplatu.png"/>
+					</div>
+					<div class="copyright">
+						© 2012  <a href="http://privatbank.ua/" target="_blank" class="copy_link">ПриватБанк</a><br/> Лицензия № 22 от 02.10.2011 г.
+					</div>
+					<div class="secure_box"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,29 +1,130 @@
-<footer class="site-footer">
-  <div class="container">
-    <div class="row align-items-center">
+<!--<footer class="footer text-white" style="background: #600030;">
+  <div class="container d-flex h-100">
+    <div class="row flex-grow-1">
+      <div class="col-lg-3 pt-3 ext-l bg-secondary text-center text-lg-left">
+        <div class="d-flex flex-column h-100">
+          <div class="pt-5 pt-lg-8 pb-4">
+            <img src="https://spyre-theme.bitbucket.io/v1.1.2/assets/img/logo-small.svg" alt="" width="92" class="mb-4">
+            <p class="mb-4 mt-3 fs&#45;&#45;1">New York, NY<br>
+              62 Birchpond St.<br>
+              Crystal Lake, NY 11762</p>
 
+            <p class="fs&#45;&#45;1"><a href="#" class="text-white"><i class="zmdi zmdi-phone zmdi-hc-fw mr-1"></i>+1-202-555-0149</a><br>
+              <a href="#" class="text-white"><i class="zmdi zmdi-email zmdi-hc-fw mr-1"></i>info@spyre.com</a></p>
+          </div>
 
-      <div class="col col-md-4">
-        <h2 class="footer-heading">{{ site.title | escape }}</h2>
-        <div class="element">
-          <p class="rss-subscribe">subscribe <a href="{{ '/feed.xml' | relative_url }}">via RSS</a></p>
+          <ul class="mt-4 mt-lg-auto mb-5 mb-lg-0 list-unstyled list-inline">
+            <li class="mr-3 list-inline-item">
+              <a href="#" target="_blank">
+                <i class="zmdi zmdi-twitter text-white"></i>
+              </a>
+            </li>
+            <li class="mr-3 list-inline-item">
+              <a href="#" target="_blank">
+                <i class="zmdi zmdi-instagram text-white"></i>
+              </a>
+            </li>
+            <li class="mr-3 list-inline-item">
+              <a href="#" target="_blank">
+                <i class="zmdi zmdi-facebook-box text-white"></i>
+              </a>
+            </li>
+            <li class="mr-3 list-inline-item">
+              <a href="#" target="_blank">
+                <i class="zmdi zmdi-pinterest text-white"></i>
+              </a>
+            </li>
+            <li class="mr-3 list-inline-item">
+              <a href="#" target="_blank">
+                <i class="zmdi zmdi-flickr text-white"></i>
+              </a>
+            </li>
+            <li class="mr-3 list-inline-item">
+              <a href="#" target="_blank">
+                <i class="zmdi zmdi-youtube text-white"></i>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="col col-md-4">
+
+      <div class="col d-flex flex-column mb-2 mt-3 pl-lg-7">
+        <div class="row pt-5 pt-lg-8 pb-4 pb-lg-6">
+          <div class="col-6 col-lg-3">
+            <h6 class="mb-1 mb-lg-4 text-uppercase">Services</h6>
+            <ul class="pt-2 mb-5 fw-light list-unstyled">
+              <li class="my-1"><a href="#" class="text-white">Design</a></li>
+              <li class="my-1"><a href="#" class="text-white">Development</a></li>
+              <li class="my-1"><a href="#" class="text-white">Themes</a></li>
+              <li class="my-1"><a href="#" class="text-white">CMS</a></li>
+              <li class="my-1"><a href="#" class="text-white">Mobile</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-3">
+            <h6 class="mb-1 mb-lg-4 text-uppercase">
+              {% if site.author %}
+              {{ site.author | escape }}
+              {% else %}
+              {{ site.title | escape }}
+              {% endif %}
+            </h6>
+            <ul class="pt-2 mb-5 fw-light list-unstyled">
+              {% if site.email %}
+              <li class="my-1"><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+              {% endif %}
+            </ul>
+          </div>
+          <div class="col-6 col-lg-3">
+            <h6 class="mb-1 mb-lg-4 text-uppercase">Help</h6>
+            <ul class="pt-2 mb-5 fw-light list-unstyled">
+              <li class="my-1"><a href="#" class="text-white">Sponsors</a></li>
+              <li class="my-1"><a href="#" class="text-white">FAQs</a></li>
+              <li class="my-1"><a href="#" class="text-white">Stories &amp; Ideas</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-auto d-flex justify-content-between">
+          <span class="fs&#45;&#45;3 fs-lg&#45;&#45;2">© Spyre, 2018 Webinning Ltd.</span>
+          <div class="fs&#45;&#45;3 fs-lg&#45;&#45;2"><a href="#" class="mr-1 text-white">Privacy Policy</a>|<a href="#" class="ml-1 text-white">Cookie Policy</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>-->
+
+
+
+
+
+
+
+
+<!--
+
+<footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">{{ site.title | escape }}</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
         <ul class="contact-list">
           <li>
             {% if site.author %}
-              <p>  {{ site.author | escape }} </p>
+              {{ site.author | escape }}
             {% else %}
-              <p> {{ site.title | escape }}</p>
+              {{ site.title | escape }}
             {% endif %}
-          </li>
-          {% if site.email %}
-          <li><p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p></li>
-          {% endif %}
+            </li>
+            {% if site.email %}
+            <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+            {% endif %}
         </ul>
       </div>
-      <div class="col-md-4">
+
+      <div class="footer-col footer-col-2">
         <ul class="social-media-list">
           {% if site.github_username %}
           <li>
@@ -31,19 +132,20 @@
           </li>
           {% endif %}
 
-          {% if site.skype_username %}
+          {% if site.twitter_username %}
           <li>
-            {% include icon-skype.html username=site.skype_username %}
+            {% include icon-twitter.html username=site.twitter_username %}
           </li>
           {% endif %}
         </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
         <p>{{ site.description | escape }}</p>
       </div>
     </div>
+
   </div>
 
 </footer>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-<script src="{{ '/script/app.js' | relative_url }}"></script>
+-->

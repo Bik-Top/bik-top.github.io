@@ -13,6 +13,13 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+permalink: /Posts/:title/
+
+collections:
+  my_collection:
+    output: true
+    permalink: /Works/:path/
+
 
 title: My_blog
 author: Victor Mantorov
@@ -29,7 +36,7 @@ github_username:  Bik-Top
 skype_username: mantorov_viktor
 
 # путь к статье в формате /категория/название_статьи
-permalink: /:categories/:title/
+# permalink: /:categories/:title/
 
 
 # Build settings
@@ -38,6 +45,11 @@ theme: minima
 plugins:
   - jekyll-feed
 
+defaults:
+  - scope:
+      path: "assets/imges"
+    values:
+      image: true
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

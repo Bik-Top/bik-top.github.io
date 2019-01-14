@@ -1,0 +1,453 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>CSS Testimonial</title>
+    <meta name="description" content="CSS Testimonial">
+    <meta name="author" content="Bergx2 GmbH">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+    <!-- scripts -->
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous" defer>
+    <link rel="stylesheet" href="css/main.css?v=1.0">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Asap+Condensed" rel="stylesheet">
+</head>
+
+<body>
+<div id="wrapper" data-role="page" data-theme="a" data-quicklinks="true" tabindex="0">
+    <header data-role="header" data-position="fixed" data-fullscreen="false">
+        <div id="row">
+            <div id="left-menu">
+                <a href="#left">
+                    <i class="fas fa-angle-double-right"></i>
+                </a>
+            </div>
+            <div id="brand">
+                <i class="fab fa-galactic-republic"></i>
+            </div>
+            <div id="right-menu">
+                <a href="#right">
+                    <i class="fas fa-angle-double-left"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <aside id="left" data-role="panel" data-position="left" data-display="push">
+        <a href="#" data-rel="close">Close panel L</a>
+    </aside>
+    <aside id="right" data-role="panel" data-position="right" data-display="push">
+        <a href="#" data-rel="close">Close panel R</a>
+    </aside>
+
+
+    <main class="main-content" data-role="content" role="main">
+
+        <div class="breadcrumb">
+            <div class="contain breadcrumb-left_arrow">
+                <a href="#left">
+                    <svg class="my-fa chevron-small-left" xmlns="http://www.w3.org/2000/svg" width="18.1" height="32" viewBox="285.9 407.3 18.1 32"><path d="M292.5 423.3l10.9 11.9c.4.5.7 1 .7 1.7s-.3 1.2-.7 1.7c-.5.5-1 .7-1.8.7-.7 0-1.2-.2-1.7-.7L286.6 425c-.5-.5-.7-1-.7-1.7s.2-1.2.7-1.7l13.3-13.6c.5-.5 1-.7 1.7-.7s1.3.2 1.8.7c.4.5.7 1 .7 1.7s-.3 1.3-.7 1.7l-11 12z"/></svg>
+                </a>
+            </div>
+            <div class="contain breadcrumb-title">
+                <span>CHAMPIONS LEAGUE / GRUPPE D</span>
+            </div>
+            <div class="contain breadcrumb-star">
+                <a href="#right">
+                    <svg class="my-fa chevron-star"  xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="281.6 404.4 32 32"><path d="M281.6 416.4h12l4-12 4 12h12l-10 8 4 12-10-8-10 8 4-12-10-8z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="matchup">
+            <div class="contain ">
+                <span>Galatasaray</span>
+            </div>
+
+            <div class="contain ">
+                <span>FC Bayern München</span>
+            </div>
+        </div>
+
+        <div class="score">
+            <div class="contain contain-mid-title">
+                <span>73`- 2. Halbzeit</span>
+            </div>
+            <div class="contain count-l">
+                <span>0</span>
+            </div>
+
+            <div class="contain contain-mid">
+                <span>:</span>
+            </div>
+
+            <div class="contain count-r">
+                <span>9</span>
+            </div>
+        </div>
+
+
+
+
+        <div class="tabs ui-grid-b">
+            <div class="contain ui-block-a">
+                <a href="#left" class="ui-bar ui-bar-a">
+                    <svg class="youtube" xmlns="http://www.w3.org/2000/svg" width="52.6" height="37" viewBox="271.5 402.4 52.6 37"><path d="M317.8 403.2a8 8 0 0 1 4.2 2.4c1 1 1.5 2.4 1.8 4 .2 1.5.3 3.8.3 6.8v9.1c0 2.9-.2 5.2-.7 7a8.6 8.6 0 0 1-2.3 4.1c-1 1-2.4 1.7-4.2 2.2-1.7.4-4 .6-7 .6h-24.2c-4 0-7-.5-9-1.5a8 8 0 0 1-4.2-4.7c-.6-2-1-4.5-1-7.7v-9.1c0-4.5.3-7.4.8-8.7.9-2.2 2.7-3.7 5.4-4.4 2-.6 4.6-.9 8-.9H310c3.3 0 6 .3 7.8.8zm-12.5 19c.6-.3 1-.8 1-1.5s-.4-1.2-1-1.5l-11-5.7c-.6-.3-1.2-.3-1.7 0-.5.4-.8.9-.8 1.5v11.5c0 .6.3 1.1.8 1.4l.8.3c.3 0 .6 0 .9-.2l11-5.8z"/></svg>
+                    <span>LIVE STREAM</span>
+                </a>
+            </div>
+            <div class="contain ui-block-b">
+                <a href="#" class="ui-bar ui-bar-a">
+                    <svg class="geo" xmlns="http://www.w3.org/2000/svg" width="26.2" height="37" viewBox="284.5 358.7 26.2 37"><path d="M297.6 358.7c7.4 0 13 5.7 13.1 13a32.7 32.7 0 0 1-6.5 15.8c-3.8 5.2-6 8-6.6 8.2-.5-.3-2.7-3-6.5-8.2-3.8-5.3-6-10.6-6.6-15.8.1-7.3 5.8-13 13.1-13zm0 8.7c-2.4 0-4.3 2-4.3 4.4 0 2.5 1.9 4.3 4.3 4.3s4.4-1.8 4.4-4.3-2-4.4-4.4-4.4z"/></svg>
+                    <span> LIVE TRACKER</span>
+                </a>
+            </div>
+            <div class="contain ui-block-c">
+                <a href="#right" class="ui-bar ui-bar-a">
+                    <svg class="wfi" xmlns="http://www.w3.org/2000/svg" width="42.1" height="37" viewBox="0 0 42.2 37"><path d="M0 27.8h5.1V37H0zM9.3 24.6h5.1V37H9.3zM18.5 18.5h5.1V37h-5.1zM27.8 10.2h5.1V37h-5.1zM37.1 0h5.1v37h-5.1z"/></svg>
+                    <span>STATISTIKEN</span>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="markets">
+            <div class="line line-dark">
+                <div class="contain">
+                    <span>TIPP</span>
+                </div>
+                <div class="contain ">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>1</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>X</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>2</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+            </div>
+            <div class="line ">
+                <div class="contain">
+                   <span> Restzeitwette (0:0)</span>
+                </div>
+                <div class="contain ">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>1</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>X</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>2</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+            </div>
+            <div class="line line-dark">
+                <div class="contain">
+                   <span>Über/Unter 0,5</span>
+                </div>
+                <div class="contain ">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>+</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>-</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+            </div>
+            <div class="line line-dark">
+                <div class="contain">
+                   <span> Über/Unter 2,5</span>
+                </div>
+                <div class="contain ">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>+</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>-</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+            </div>
+            <div class="line line-dark">
+                <div class="contain">
+                   <span>Über/Unter 3,5</span>
+                </div>
+                <div class="contain ">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>+</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>-</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="line">
+                <div class="contain">
+                   <span>Handicap 0:1</span>
+                </div>
+                <div class="contain ">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>1</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>+</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>-</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+            </div>
+            <div class="line">
+                <div class="contain">
+                   <span>Handicap 0:2</span>
+                </div>
+                <div class="contain ">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>1</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>+</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>-</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+            </div>
+            <div class="line">
+                <div class="contain">
+                   <span>Handicap 1:0</span>
+                </div>
+                <div class="contain ">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>1</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>+</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>-</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+            </div>
+            <div class="line line-dark">
+                <div class="contain">
+                    <span>Anzahl der Tore</span>
+                </div>
+                <div class="contain ">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>0-1</span>
+                        <span>3.80</span>
+                    </button>
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>6+</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>2-3</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>4-5</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="line">
+                <div class="contain">
+                    <span>Genaues  Ergebnis</span>
+                </div>
+                <div class="contain ">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>1:0</span>
+                        <span>3.80</span>
+                    </button>
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>1:0</span>
+                        <span>3.80</span>
+                    </button>
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>1:0</span>
+                        <span>3.80</span>
+                    </button>
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>1:0</span>
+                        <span>3.80</span>
+                    </button>
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>1:0</span>
+                        <span>3.80</span>
+                    </button>
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>1:0</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>0:0</span>
+                        <span>3.80</span>
+                    </button>
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>0:0</span>
+                        <span>3.80</span>
+                    </button>
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>0:0</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>0:1</span>
+                        <span>3.80</span>
+                    </button>
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>0:1</span>
+                        <span>3.80</span>
+                    </button>
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>0:1</span>
+                        <span>3.80</span>
+                    </button>
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>0:1</span>
+                        <span>3.80</span>
+                    </button>
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>0:1</span>
+                        <span>3.80</span>
+                    </button>
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>0:1</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="line line-dark">
+                <div class="contain">
+                    <span>In welcher HZ <br>werden mehr<br> Tore erzielt?</span>
+                </div>
+                <div class="contain ">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>1. HZ</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>X</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>2. HZ</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+            </div>
+            <div class="line">
+                <div class="contain">
+                    <span>Torschütze <br>Heim </span>
+                </div>
+                <div class="contain ">
+                    <span>Max Kruse </span>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>J</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+                <div class="contain">
+                    <button class="ui-btn ui-corner-all  ui-btn-inline">
+                        <span>N</span>
+                        <span>3.80</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer data-role="footer">
+        footer
+    </footer>
+</div>
+
+
+</body>
+</html>

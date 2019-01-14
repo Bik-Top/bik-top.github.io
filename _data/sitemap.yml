@@ -1,0 +1,13 @@
+#- title: Home
+#  page-name: ''
+#  permalink: '.'
+
+- title: Posts
+  page-name: posts
+  permalink: 'posts'
+  url: '/Posts/'
+
+- title: Works
+  page-name: works
+  permalink: 'works'
+  url: '/Works/'
