@@ -1,34 +1,81 @@
 ---
 layout: page
-title:  "Jekyll!"
+title:  "Jekyll"
 
 date:   2017-09-03 22:21:31 +0200
 categories: cat-ipsum1
+highlighter: pygments
 ---
+* Content
+{:toc}
+
+Все, что относиться к Jekyll и Markdown которое понадобилось и было интересно узнать.
+
+## Editable text
 
 
-## Ссылки в Jakyll:
-вход:
+~~~
+1 <em> some text </em> = *asterisks*  - italics
+
+2 <em> some text </em> = _underscores_ - italics
+~~~
+
+>  1 <em> some text </em> = *asterisks* |
+>
+>  2 <em> some text </em> = _underscores_ - italics
+
+
+
+~~~
+1 <strong> some text </strong> = **asterisks** - strong
+
+2 <strong> some text </strong> = __underscores__ - strong
+~~~
+
+  1 <strong> some text </strong> = **asterisks** - strong
+
+  2 <strong> some text </strong> = __underscores__ - strong
+
+
+ ~~~
+  ~~Scratch this.~~
+ ~~~
+
+ ~~Scratch this.~~
+
+## Ссылки в Jekyll:
+<br>
+
+&raquo; на вход:
+
  {% raw %}
-~~~html
+~~~markdown
 {{ site.url }}{% link _my_collection/solar_home/index.html %}
 ~~~
  {% endraw %}
 
+
 &raquo; на выходе:
+
 ````
 http://localhost:4000/Works/solar_home/index.html
 ````
 
-| &nbsp; | &nbsp;
-|:-|-:
-| site.url| "http://localhost:4000/"
-| _my_collection | "Works/"
-| solar_home/ | "solar_home/index.html"
+ _my_collection  преобразуеться в "Works/" как мы и настроили в _config.yml
+
+````
+collections:
+  my_collection:
+    output: true
+    permalink: /Works/:path/
+````
+
+то все посты в папке _my_collection будут
+преобразовываться /Works/:path/
 
 ------------------------------------------------------
-<br>
-вход:
+&raquo; на вход:
+
  {% raw %}
 ~~~html
   {{ '/Works/solar_home' | relative_url }}
@@ -36,13 +83,14 @@ http://localhost:4000/Works/solar_home/index.html
  {% endraw %}
 
 &raquo; на выходе:
+
 ````
 /Works/solar_home
 ````
 
 ------------------------------------------------------
-<br>
-вход:
+&raquo; на вход:
+
  {% raw %}
 ~~~html
  {{ '/assets/main.css' | relative_url }}
@@ -50,13 +98,14 @@ http://localhost:4000/Works/solar_home/index.html
  {% endraw %}
 
 &raquo; на выходе:
+
 ````
 /assets/main.css
 ````
 
 ------------------------------------------------------
-<br>
-вход:
+&raquo; на вход:
+
  {% raw %}
 ~~~html
   {{ page.url | replace:'index.html','' | absolute_url }}
@@ -64,8 +113,342 @@ http://localhost:4000/Works/solar_home/index.html
  {% endraw %}
 
 &raquo; на выходе:
+
 ````
 http://localhost:4000/Works/
 ````
+------------------------------------------------------
+
+## Ссылки в Markdown
+<br>
+&raquo; на выходе:
+
+ {% raw %}
+~~~html
+  [ссылкa](http://prgssr.ru "главная страница")
+~~~
+ {% endraw %}
+
+
+&raquo; на выходе:
+
+````
+<a href="http://prgssr.ru" title="главная страница">ссылкa</a>
+````
+
+&raquo; пример:
+
+  [ссылкa](http://prgssr.ru "главная страница")
 
 ------------------------------------------------------
+&raquo; на выходе:
+
+ {% raw %}
+~~~html
+  [!["Джекилл"](/assets/images/tr3.png )](http://prgssr.ru "главная страница")
+~~~
+ {% endraw %}
+
+
+&raquo; на выходе:
+
+````
+<a href="https://www.google.com/" title="главная страница">
+  <img src="https://fakeimg.pl/350x200/?text=World&amp;font=lobster" alt="&quot;Джекилл&quot;">
+</a>
+````
+
+&raquo; пример:
+
+  [!["Джекилл"](https://fakeimg.pl/350x200/?text=World&font=lobster)](https://www.google.com/ "главная страница")
+
+------------------------------------------------------
+&raquo; на вход:
+
+ {% raw %}
+~~~html
+  Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll.
+  File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+
+  [jekyll-docs]: https://jekyllrb.com/docs/home
+  [jekyll-gh]:   https://github.com/jekyll/jekyll
+  [jekyll-talk]: https://talk.jekyllrb.com/
+~~~
+ {% endraw %}
+
+
+&raquo; на выходе:
+````
+<p>Check out the
+<a href="https://jekyllrb.com/docs/home">
+  Jekyll docs
+</a>
+for more info on how to get the most out of Jekyll. File all bugs/feature requests at
+<a href="https://github.com/jekyll/jekyll">
+  Jekyll’s GitHub repo
+</a>. If you have questions, you can ask them on
+<a href="https://talk.jekyllrb.com/">
+  Jekyll Talk
+</a>.
+</p>
+````
+
+&raquo; пример:
+
+  Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll.
+  File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+
+  [jekyll-docs]: https://jekyllrb.com/docs/home
+  [jekyll-gh]:   https://github.com/jekyll/jekyll
+  [jekyll-talk]: https://talk.jekyllrb.com/
+
+------------------------------------------------------
+## img в Markdown
+<br>
+&raquo; на вход:
+
+ {% raw %}
+~~~html
+  !["Джекилл"](/assets/images/tr3.png )
+~~~
+ {% endraw %}
+
+
+&raquo; на выходе:
+````
+<img src="/assets/images/tr3.png" alt="&quot;Джекилл&quot;">
+````
+
+&raquo; пример:
+
+  !["Джекилл"](https://fakeimg.pl/350x200/?text=World&font=lobster )
+
+------------------------------------------------------
+&raquo; на вход:
+
+ {% raw %}
+~~~html
+ <http://prgssr.ru>
+~~~
+ {% endraw %}
+
+&raquo; на выходе:
+````
+<a href="http://prgssr.ru">http://prgssr.ru</a>
+````
+
+&raquo; пример:
+
+   <http://prgssr.ru>
+
+------------------------------------------------------
+## \<hr\> черта в Markdown
+<br>
+&raquo; на вход:
+
+ {% raw %}
+~~~html
+ 1.  ____________
+ 2. * * *   **  **
+ 3. ----------
+~~~
+ {% endraw %}
+
+&raquo; на выходе: \<hr\>
+
+------------------------------------------------------
+## \<table\> таблица в Markdown
+<br>
+&raquo; на вход:
+
+ {% raw %}
+~~~html
+| Первая ячейка|Вторая ячейка|Третья ячейка
+| Первая | Вторая | Третья
+~~~
+ {% endraw %}
+
+| Первая ячейка|Вторая ячейка|Третья ячейка
+| Первая | Вторая | Третья
+
+<br>
+&raquo; на выходе:
+
+````html
+<table>
+  <tbody>
+    <tr>
+      <td>Первая ячейка</td>
+      <td>Вторая ячейка</td>
+      <td>Третья ячейка</td>
+    </tr>
+    <tr>
+      <td>Первая</td>
+      <td>Вторая</td>
+      <td>Третья</td>
+    </tr>
+  </tbody>
+</table>
+````
+
+&raquo; пример:
+
+| Первая ячейка|Вторая ячейка|Третья ячейка
+| Первая | Вторая | Третья
+
+------------------------------------------------------
+&raquo; на вход:
+
+ {% raw %}
+~~~html
+| выравнивание по умолчанию |  выравнивание слева | выравнивание по центру |  выравнивание справа
+|-|:-|:-:|-:
+| First body part | Second cell | Third cell | fourth cell
+| 1 body part | 2 cell | 3 cell | 4 cell
+
+~~~
+ {% endraw %}
+
+| Первая ячейка|Вторая ячейка|Третья ячейка
+| Первая | Вторая | Третья
+
+<br>
+&raquo; на выходе:
+
+````html
+<table>
+  <thead>
+    <tr>
+      <th>выравнивание по умолчанию</th>
+      <th style="text-align: left">выравнивание слева</th>
+      <th style="text-align: center">выравнивание по центру</th>
+      <th style="text-align: right">выравнивание справа</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>First body part</td>
+      <td style="text-align: left">Second cell</td>
+      <td style="text-align: center">Third cell</td>
+      <td style="text-align: right">fourth cell</td>
+    </tr>
+    <tr>
+      <td>1 body part</td>
+      <td style="text-align: left">2 cell</td>
+      <td style="text-align: center">3 cell</td>
+      <td style="text-align: right">4 cell</td>
+    </tr>
+  </tbody>
+</table>
+````
+
+&raquo; пример:
+
+| выравнивание по умолчанию |  выравнивание слева | выравнивание по центру |  выравнивание справа
+|-|:-|:-:|-:
+| First body part | Second cell | Third cell | fourth cell
+| 1 body part | 2 cell | 3 cell | 4 cell
+
+
+
+------------------------------------------------------
+## \<abbr\> Сноски в Markdown
+<br>
+&raquo; на вход:
+
+ {% raw %}
+~~~markdown
+*[другого языка]: kramdown
+*[HTML]: HyperTextMarkupLanguage
+
+
+Этот текст написан не на HTML, а с использованием другого языка!
+~~~
+ {% endraw %}
+
+| Первая ячейка|Вторая ячейка|Третья ячейка
+| Первая | Вторая | Третья
+
+<br>
+&raquo; на выходе:
+
+````
+<p>
+  Этот текст написан не на
+  <abbr title="HyperTextMarkupLanguage">
+    HTML
+  </abbr>, а с использованием
+  <abbr title="kramdown">
+    другого языка
+    </abbr>!
+</p>
+````
+
+&raquo; пример:
+
+*[другого языка]: kramdown
+*[HTML]: HyperTextMarkupLanguage
+
+
+Этот текст написан не на HTML, а с использованием другого языка!
+
+------------------------------------------------------
+
+
+~~~markdown
+         ( \
+       \ \
+       / /                |\\
+      / /     .-`````-.   / ^`-.
+      \ \    /         \_/  {|} `o
+       \ \  /   .---.   \\ _  ,--'
+        \ \/   /     \,  \( `^^^
+         \   \/\      (\  )
+          \   ) \     ) \ \
+      jgs  ) /__ \__  ) (\ \___
+          (___)))__))(__))(__)))
+~~~
+
+------------------------------------------------------
+## \<blockquote\> Задаются идентификаторы для цитаты
+<br>
+&raquo; на вход:
+
+ {% raw %}
+~~~html
+> Hello
+{: #bq-id}
+
+просто текст в Markdown будет завернут в тег <p>
+то мы можем попробовать вставить и ему идентивикатор
+{: .some-class}
+~~~
+ {% endraw %}
+
+
+<br>
+&raquo; на выходе:
+
+````
+<blockquote id="bq-id">
+  <p>Hello</p>
+</blockquote>
+
+
+<p class="blockquote">просто текст в Markdown будет завернут в тег &lt;p&gt; то мы можем попробовать вставить и ему идентивикатор</p>
+````
+
+&raquo; пример:
+
+> Hello some blockquote
+{:#bq-id}
+
+просто текст в Markdown будет завернут в тег \<p\>
+то мы можем попробовать вставить и ему идентивикатор
+{:.blockquote}
+
+------------------------------------------------------
+
+
+
+

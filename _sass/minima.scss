@@ -1,3 +1,22 @@
-.minh-100vh {
-  min-height: 100vh;
+/* import Main */
+@import "main";
+/* END import Main*/
+
+.social{
+  list-style: none;
+  padding: 0;
+  & li{
+    display: inline-block;
+  }
 }
+
+.github-corner {
+  &  a {
+    display: inline-block;
+    padding: 0.5rem 0.5rem;
+  }
+  &  svg {
+    height: 22px;
+  }
+}
+
