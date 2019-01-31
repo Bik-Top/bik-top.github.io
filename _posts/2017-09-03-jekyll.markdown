@@ -1,15 +1,18 @@
 ---
 layout: page
-title:  "Jekyll"
+title:  "Welcome to Jekyll"
 
 date:   2017-09-03 22:21:31 +0200
-categories: cat-ipsum1
+categories: Jekyll
 highlighter: pygments
 ---
+
 * Content
 {:toc}
-
+<!--more-->
 Все, что относиться к Jekyll и Markdown которое понадобилось и было интересно узнать.
+<!--more-->
+
 
 ## Editable text
 
@@ -448,7 +451,72 @@ for more info on how to get the most out of Jekyll. File all bugs/feature reques
 {:.blockquote}
 
 ------------------------------------------------------
+## &raquo; Вывод всех постов:
+
+ {% raw %}
+~~~html
+ <ul>
+   {% for post in site.posts %}
+   <li>
+    <span>{{ post.date | date_to_string }}</span> &raquo;
+    <a href="{{ post.url }}">{{ post.title }}</a>
+   </li>
+   {% endfor %}
+ </ul>
+~~~
+ {% endraw %}
+
+-------------------------------------------------------
+
+## &raquo; Вывод всех постов из кастомных коллекций:
+создаем коллекцию в _config.yml
+~~~
+collections:
+  my_collection:
+    output: true
+    layout: page
+    permalink: /Works/:path/
+~~~
+
+выовдим как обычно посты my_collection
+ {% raw %}
+~~~html
+ <ul>
+   {% for post in site.my_collection %}
+   <li>
+    <span>{{ post.date | date_to_string }}</span> &raquo;
+    <a href="{{ post.url }}">{{ post.title }}</a>
+   </li>
+   {% endfor %}
+ </ul>
+~~~
+ {% endraw %}
+
+-------------------------------------------------------
+
+## &raquo; Выдержка из постов.
+Выводит первый параграф \<p\>
+
+Если вас не устраивает автоматическая генерация, можно разделить с помощью \<!--more--\>, его же можно переопределить на любой другой разделитьель
 
 
+текст выдержки ввыдит<br>
+\<!--more--\><br>
+текст выдержки скрыт
+
+ {% raw %}
+~~~html
+<ul>
+  {% for post in site.posts %}
+  <li>
+    <a href="{{ post.url }}">{{ post.title }}</a>
+    {{ post.excerpt }}
+  </li>
+  {% endfor %}
+</ul>
+~~~
+ {% endraw %}
+
+-------------------------------------------------------
 
 

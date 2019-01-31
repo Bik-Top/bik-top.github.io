@@ -1,3 +1,30 @@
+body{
+  font-family: Lora;
+  //background: -webkit-gradient(linear, left top, left bottom, from(#2f170fa6)), url(/images/bg/bg-mru.jpg);
+ // background:   linear-gradient(  to bottom, rgba(47, 23, 15, 0.8),  rgba(82, 43, 28, 0.47)), url('/images/bg/bg-mru.jpg') no-repeat left top ;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+.text-primary {
+  font-family: Raleway;
+  color: #e6a756!important;
+  font-size: 5rem;
+}
+.navbar-brand {
+  color: #e6a756!important;
+}
+
+.site-heading  {
+  font-size: 4rem;
+  font-weight: 100;
+  line-height: 5rem;
+}
+
+.bg-light {
+  background-color: rgba(82, 43, 28, 0.47)!important;
+}
+
 
 .social{
   list-style: none;
@@ -16,4 +43,129 @@
     height: 22px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+body,
+html {
+  margin:0;
+  padding:0;
+  min-height:100%;
+}
+
+.landingItem {
+  //font:500px/1000px Arial, Helvetica, sans-serif;
+  //font-weight:900;
+  //color:#000;
+  //text-align:center;
+  //position:relative;
+  //background:#fff;
+  //border-radius:20px;
+  margin:0 -10px 20px;
+}
+.bg_vh{
+  height: 100vh;
+  background: #f00;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.bg_1 {
+  height: 100vh;
+  line-height: 600px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  & h1{
+
+    font : normal 5rem/7rem Lora;
+  }
+  & h2{
+
+    font : normal 5rem/7rem Raleway;
+  }
+}
+
+.bg_2 {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.bg_3 {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.bg_4 {
+  height: 100vh;
+  line-height:500px;
+}
+
+.bg_5 {
+  height: 100vh;
+  line-height:1600px;
+}
+
+
+
+.landingNav {
+  display: flex;
+  justify-content: center;
+
+  & > ul {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    display: flex;
+  }
+  li {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+   a {
+    color: #09F;
+    padding: 20px 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    font: 12px/1.2em arial;
+  }
+  & .cur {
+    color: #ccc;
+    box-shadow: inset 0px -1px 0px 0px #f0f;
+    transition: 1s;
+  }
+  &.fix {
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index: 1;
+
+    ul{
+      //background:   linear-gradient(  to bottom, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.01));
+      background: rgba(255, 255,255, .8);
+      //border-radius: 0 0 42% 42%;
+    }
+  }
+
+}
+
+
+
 
