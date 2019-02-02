@@ -167,5 +167,27 @@ html {
 }
 
 
+@media (max-width: 770px){
+  .bg_1{
+    h1, h2 {
+      font: normal 3rem/5rem Lora;
+    }
+  }
+  .bg_2 {
+    height: auto;
+    .site-heading{
+      font: normal 3rem/5rem Lora;
+    }
+  }
+  .card-deck  {
+    .card{
+      flex: 1 1 100%;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+
+
 
 

@@ -37,13 +37,13 @@ page-name: no-matter
 
       <div class="card-deck">
       {% for post in site.posts limit:3 %}
-        <div class="card">
-        <div class="card-body">
-            <h4 class="card-title"><a href="{{ post.url }}">{{ post.title }}</a></h4>
+        <div class="card ">
           <div class="card-body">
-            <p class="card-text">{{ post.excerpt | strip_html | truncatewords:30 }}</p>
+              <h4 class="card-title"><a href="{{ post.url }}">{{ post.title }}</a></h4>
+
+              <p class="card-text">{{ post.excerpt | strip_html | truncatewords:30 }}</p>
+
           </div>
-        </div>
         </div>
       {% endfor %}
       </div>
@@ -53,8 +53,8 @@ page-name: no-matter
     </div>
   </div>
 </div>
-<div id="land_3" class="landingItem ">
-  <div class="bg_3">
+<div id="land_3" class="landingItem">
+  <div class="bg_3 ">
     <div id="carouselId" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselId" data-slide-to="0" class="active"></li>
@@ -64,7 +64,7 @@ page-name: no-matter
       <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
           <img data-src="holder.js/900x500/auto/#777:#555/text:First slide"
-               src="https://fakeimg.pl/1150x600/?text=First slide&font=lobster" alt="First slide">
+               src="https://fakeimg.pl/1150x600/?text=First slide&font=lobster" class="d-block w-100" alt="First slide">
           <div class="carousel-caption">
             <h3>Title</h3>
             <p>Description</p>
@@ -72,14 +72,14 @@ page-name: no-matter
         </div>
         <div class="carousel-item">
           <img data-src="holder.js/900x500/auto/#666:#444/text:Second slide"
-               src="https://fakeimg.pl/1150x600/?text=Second slide&font=lobster" alt="Second slide">
+               src="https://fakeimg.pl/1150x600/?text=Second slide&font=lobster"  class="d-block w-100"  alt="Second slide">
           <div class="carousel-caption">
             <h3>Title</h3>
             <p>Description</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://fakeimg.pl/1150x600/?text=Third slide&font=lobster" alt="Third slide">
+          <img src="https://fakeimg.pl/1150x600/?text=Third slide&font=lobster"  class="d-block w-100" alt="Third slide">
           <div class="carousel-caption">
 
             <h3>Title</h3>
