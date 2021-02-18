@@ -1,5 +1,15 @@
-
-
+.page-wrapper {
+  text-align: center;
+  margin: 0 195px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 60px);
+}
+.page-wrapper table{
+  background: #fff;
+}
 :root {
   --header-bg-color: #505050;
   --header-active-element-bg-color: #202020;
@@ -15,6 +25,7 @@
 html, body {
   min-height: 100%;
   height: 100%;
+  background-color: #eee;
 }
 
 body {
