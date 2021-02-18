@@ -1,0 +1,10 @@
+:root {
+    --header-bg-color: #505050;
+    --header-active-element-bg-color: #202020;
+    --white-color: white;
+    --header-bg-input: #707070;
+    --sidebar-bg-hovered-item: #3a3a3a;
+    --icon-color: #ccc;
+
+    --animate-duration: 0.3s;
+}

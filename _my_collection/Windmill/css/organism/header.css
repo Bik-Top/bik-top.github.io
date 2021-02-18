@@ -1,0 +1,142 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    background-color: var(--header-bg-color);
+    display: flex;
+    color: var(--white-color);
+}
+
+.main-menu {
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.main-menu ul {
+    display: flex;
+}
+
+.main-menu__link {
+    padding: 20px 10px;
+    text-decoration: none;
+    color: currentColor;
+}
+
+.main-menu > ul > li:last-child:after {
+    content: none;
+}
+
+.main-menu > ul > li:after {
+    content: '>';
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-menu > ul > li {
+    position: relative;
+    display: flex;
+}
+
+.main-menu > ul > li:hover ul {
+    display: flex;
+}
+
+.main-menu > ul > li ul {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    background: #505050;
+    padding: 10px;
+    width: 100%;
+    top: 100%;
+}
+
+.burger-wrap {
+    width: 60px;
+    height: 57px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--header-active-element-bg-color);
+    cursor: pointer;
+}
+
+.burger-wrap:hover aside {
+    display: inline-flex;
+    left: 0;
+    opacity: 1;
+}
+
+.icon-arrow-back {
+    display: none;
+}
+
+.burger-wrap:hover .icon-arrow-back {
+    display: inline-flex;
+}
+
+.burger-wrap:hover .icon-menu11 {
+    display: none;
+}
+
+.f3 {
+    font-size: 24px;
+    color: currentColor;
+}
+
+.searchbar {
+    margin-left: auto;
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    max-width: 570px;
+    width: 100%;
+    position: relative;
+}
+
+.searchbar__item {
+    width: 100%;
+    margin-right: 15px;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    color: currentColor;
+    font-weight: 400;
+    padding: 1px 34px;
+    background-color: var(--header-bg-input);
+    border: solid 1px var(--header-bg-input);
+    outline: none;
+}
+
+.searchbar__item::placeholder {
+    color: currentColor;
+}
+
+.icon-search {
+    background: none;
+    color: currentColor;
+    border: 0;
+    outline: none;
+}
+
+.il {
+    position: absolute;
+    left: 3px;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ir {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
