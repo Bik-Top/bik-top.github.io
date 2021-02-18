@@ -1,8 +1,8 @@
-@import "./fonts.css";
-@import "./_variable.css";
-@import "./choices.reset.css";
+@import "./css/fonts.css";
+@import "./css/_variable.css";
+@import "./css/choices.reset.css";
 
-@import "./organism/header.css";
-@import "./organism/sidebar.css";
+@import "./css/organism/header.css";
+@import "./css/organism/sidebar.css";
 
 
